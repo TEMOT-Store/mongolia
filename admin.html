@@ -10,8 +10,8 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            background-color: #060709; 
-            color: #ffffff; 
+            background-color: #f6f3ee !important; 
+            color: #4a3e3d; 
             padding: 20px 4% 50px 4%; 
             display: flex; 
             flex-direction: column; 
@@ -26,37 +26,38 @@
             left: 0; 
             width: 100%; 
             height: 100%; 
-            background-color: #060709; 
+            background-color: #f6f3ee; 
             display: flex; 
             justify-content: center; 
             align-items: center; 
             z-index: 9999; 
         }
         .login-box { 
-            background: #0d1117; 
-            border: 1px solid #21262d; 
+            background: #ffffff; 
+            border: 1px solid #e0d5c5; 
             padding: 30px 24px; 
             border-radius: 20px; 
             width: 90%; 
             max-width: 380px; 
             text-align: center; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
-        .login-box h3 { margin-bottom: 15px; font-weight: 800; color: #ffffff; font-size: 18px; }
+        .login-box h3 { margin-bottom: 15px; font-weight: 800; color: #2b221e; font-size: 18px; }
         .login-box input { 
             width: 100%; 
             padding: 12px; 
-            border: 1px solid #21262d; 
+            border: 1px solid #d0c2b0; 
             border-radius: 10px; 
             margin-bottom: 15px; 
             outline: none; 
             font-size: 16px; 
             text-align: center; 
-            background: #060709; 
-            color: #ffffff; 
+            background: #ffffff; 
+            color: #2b221e; 
         }
-        .login-box input:focus { border-color: #8b5cf6; }
+        .login-box input:focus { border-color: #a88867; }
         .btn-login { 
-            background: #8b5cf6; 
+            background: linear-gradient(135deg, #c3a483 0%, #a88867 100%); 
             color: white; 
             border: none; 
             padding: 12px; 
@@ -67,39 +68,40 @@
             cursor: pointer; 
             transition: 0.2s;
         }
-        .btn-login:hover { background: #7c3aed; }
+        .btn-login:hover { background: linear-gradient(135deg, #a88867 0%, #8e7051 100%); }
 
         /* Үндсэн Админ самбар */
         .admin-main-content { display: none; width: 100%; max-width: 600px; }
         .header-bar { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
         .btn-back { 
-            background: #0d1117; 
-            border: 1px solid #21262d; 
+            background: #eae3d9; 
+            border: 1px solid #d8cdbe; 
             width: 40px; 
             height: 40px; 
             border-radius: 12px; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            color: #ffffff; 
+            color: #2b221e; 
             text-decoration: none; 
             font-size: 16px; 
         }
-        .btn-back:hover { background: #161b22; }
-        h2 { font-size: 20px; font-weight: 800; color: #ffffff; }
+        .btn-back:hover { background: #d8cdbe; }
+        h2 { font-size: 20px; font-weight: 800; color: #2b221e; }
 
         /* Сайт руу орсон хүний тоог харуулах карт */
         .site-visit-card {
-            background: #0d1117;
-            border: 1px solid #21262d;
+            background: #ffffff;
+            border: 1px solid #e8e0d5;
             border-radius: 20px;
             padding: 18px;
             margin-bottom: 20px;
             text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
         .site-visit-title {
             font-size: 12px;
-            color: #8b949e;
+            color: #706259;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -107,72 +109,45 @@
         .site-visit-count {
             font-size: 32px;
             font-weight: 800;
-            color: #38bdf8;
+            color: #a88867;
             margin-top: 4px;
         }
 
         .admin-box { 
-            background-color: #0d1117; 
-            border: 1px solid #21262d; 
+            background-color: #ffffff; 
+            border: 1px solid #e8e0d5; 
             padding: 20px; 
             border-radius: 20px; 
             width: 100%; 
             margin-bottom: 25px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
 
         .form-group { margin-bottom: 15px; }
-        .form-group label { display: block; font-size: 11px; font-weight: 700; color: #cbd5e1; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .form-group label { display: block; font-size: 11px; font-weight: 700; color: #a88867; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
         .form-group input, .form-group select, .form-group textarea { 
             width: 100%; 
             padding: 12px; 
-            border: 1px solid #21262d; 
+            border: 1px solid #d0c2b0; 
             border-radius: 10px; 
             font-size: 14px; 
-            background-color: #060709; 
-            color: #ffffff; 
+            background-color: #ffffff; 
+            color: #2b221e; 
             outline: none; 
             font-family: inherit;
         }
         .form-group textarea { resize: vertical; min-height: 80px; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #8b5cf6; }
-
-        /* Size Checkbox Загвар */
-        .size-checkboxes {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            background: #060709;
-            padding: 12px;
-            border: 1px solid #21262d;
-            border-radius: 10px;
-        }
-        .size-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 13px;
-            color: #ffffff;
-            cursor: pointer;
-            background: #161b22;
-            padding: 6px 10px;
-            border-radius: 6px;
-            border: 1px solid #30363d;
-        }
-        .size-item input[type="checkbox"] {
-            width: auto;
-            accent-color: #8b5cf6;
-            cursor: pointer;
-        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #a88867; }
 
         .file-input-wrapper { 
-            background-color: #060709; 
-            border: 2px dashed #30363d; 
+            background-color: #f6f3ee; 
+            border: 2px dashed #d0c2b0; 
             padding: 20px; 
             border-radius: 12px; 
             text-align: center; 
             cursor: pointer; 
             position: relative; 
-            color: #8b949e;
+            color: #706259;
             font-size: 13px;
             font-weight: 600;
         }
@@ -181,7 +156,7 @@
         /* Зургийн урьдчилан харах жагсаалт */
         .preview-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px; }
         .preview-item { position: relative; width: 70px; height: 70px; }
-        .preview-thumbnail { width: 100%; height: 100%; border-radius: 8px; object-fit: cover; border: 1px solid #30363d; }
+        .preview-thumbnail { width: 100%; height: 100%; border-radius: 8px; object-fit: cover; border: 1px solid #d0c2b0; }
         .remove-img-btn { 
             position: absolute; 
             top: -6px; 
@@ -201,7 +176,7 @@
         }
 
         .btn-add { 
-            background-color: #8b5cf6; 
+            background: linear-gradient(135deg, #c3a483 0%, #a88867 100%); 
             color: white; 
             border: none; 
             padding: 14px; 
@@ -213,16 +188,16 @@
             margin-top: 10px; 
             transition: 0.2s;
         }
-        .btn-add:hover { background-color: #7c3aed; }
+        .btn-add:hover { background: linear-gradient(135deg, #a88867 0%, #8e7051 100%); }
 
-        .section-title { font-size: 16px; font-weight: 800; color: #ffffff; margin: 25px 0 12px 0; width: 100%; text-align: left; display: flex; align-items: center; gap: 8px; }
+        .section-title { font-size: 16px; font-weight: 800; color: #2b221e; margin: 25px 0 12px 0; width: 100%; text-align: left; display: flex; align-items: center; gap: 8px; }
         
         .product-list, .order-list { width: 100%; }
 
         /* Картны загвар */
         .admin-prod-card, .order-card { 
-            background: #0d1117; 
-            border: 1px solid #21262d; 
+            background: #ffffff; 
+            border: 1px solid #e8e0d5; 
             border-radius: 16px; 
             padding: 14px; 
             margin-bottom: 12px; 
@@ -230,35 +205,35 @@
             align-items: center; 
             justify-content: space-between; 
             gap: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
 
         .order-card { flex-direction: column; align-items: flex-start; }
 
-        .admin-prod-card img { width: 60px; height: 60px; object-fit: cover; border-radius: 10px; border: 1px solid #21262d; }
+        .admin-prod-card img { width: 60px; height: 60px; object-fit: cover; border-radius: 10px; border: 1px solid #e0d5c5; }
         .prod-info, .order-info { flex-grow: 1; text-align: left; width: 100%; }
-        .prod-name { font-size: 14px; font-weight: 700; color: #ffffff; }
-        .prod-price { font-size: 14px; font-weight: 800; color: #a78bfa; margin-top: 2px; }
-        .prod-desc { font-size: 12px; color: #8b949e; margin-top: 4px; line-height: 1.3; }
+        .prod-name { font-size: 14px; font-weight: 700; color: #2b221e; }
+        .prod-price { font-size: 14px; font-weight: 800; color: #a88867; margin-top: 2px; }
+        .prod-desc { font-size: 12px; color: #706259; margin-top: 4px; line-height: 1.3; }
 
-        .order-row { font-size: 13px; color: #cbd5e1; margin-bottom: 4px; }
-        .order-row b { color: #ffffff; }
-        .order-code-badge { background: #161b22; border: 1px solid #30363d; padding: 2px 8px; border-radius: 6px; font-size: 11px; color: #ef4444; font-weight: bold; }
+        .order-row { font-size: 13px; color: #4a3e3d; margin-bottom: 4px; }
+        .order-row b { color: #2b221e; }
+        .order-code-badge { background: #f6f3ee; border: 1px solid #e0d5c5; padding: 2px 8px; border-radius: 6px; font-size: 11px; color: #d9534f; font-weight: bold; }
 
         .stats-container { margin-top: 6px; display: flex; gap: 8px; flex-wrap: wrap; }
         .stat-badge { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; }
-        .stat-views { background-color: #1e293b; color: #38bdf8; }
-        .stat-orders { background-color: #2e1065; color: #c084fc; }
-        .stat-category { background-color: #161b22; border: 1px solid #30363d; color: #f59e0b; }
+        .stat-views { background-color: #f6f3ee; border: 1px solid #e0d5c5; color: #38bdf8; }
+        .stat-orders { background-color: #f6f3ee; border: 1px solid #e0d5c5; color: #a88867; }
+        .stat-category { background-color: #f6f3ee; border: 1px solid #e0d5c5; color: #d97706; }
         .stat-status-in { background-color: rgba(16, 185, 129, 0.15); color: #10b981; }
         .stat-status-out { background-color: rgba(239, 68, 68, 0.15); color: #ef4444; }
-        .stat-sizes { background-color: #312e81; color: #a5b4fc; }
-        .stat-stock { background-color: #065f46; color: #34d399; }
+        .stat-stock { background-color: #f6f3ee; border: 1px solid #e0d5c5; color: #059669; }
 
         .prod-actions { display: flex; flex-direction: column; gap: 6px; }
 
         .btn-edit { 
             background-color: rgba(56, 189, 248, 0.15); 
-            color: #38bdf8; 
+            color: #0284c7; 
             border: 1px solid rgba(56, 189, 248, 0.3); 
             padding: 6px 10px; 
             border-radius: 8px; 
@@ -298,13 +273,13 @@
         .btn-complete:hover { background-color: #10b981; color: white; }
 
         .empty-text { 
-            color:#6e7681; 
+            color:#706259; 
             font-size:14px; 
             text-align:center; 
             padding: 25px; 
-            background: #0d1117; 
+            background: #ffffff; 
             border-radius:16px; 
-            border: 1px solid #21262d; 
+            border: 1px solid #e8e0d5; 
             width: 100%;
         }
 
@@ -312,7 +287,8 @@
         .modal-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(43, 34, 30, 0.6);
+            backdrop-filter: blur(4px);
             display: none;
             justify-content: center;
             align-items: center;
@@ -320,14 +296,15 @@
             padding: 20px;
         }
         .modal-box {
-            background: #0d1117;
-            border: 1px solid #21262d;
+            background: #ffffff;
+            border: 1px solid #e0d5c5;
             border-radius: 20px;
             padding: 24px;
             width: 100%;
             max-width: 500px;
             max-height: 90vh;
             overflow-y: auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         .modal-header {
             display: flex;
@@ -335,9 +312,9 @@
             align-items: center;
             margin-bottom: 20px;
         }
-        .modal-header h3 { font-size: 18px; color: #ffffff; }
+        .modal-header h3 { font-size: 18px; color: #2b221e; }
         .btn-close-modal {
-            background: none; border: none; color: #8b949e; font-size: 20px; cursor: pointer;
+            background: none; border: none; color: #706259; font-size: 20px; cursor: pointer;
         }
         .btn-save-edit {
             background: #10b981; color: white; border: none; padding: 12px; width: 100%;
@@ -379,36 +356,17 @@
 
             <div class="form-group">
                 <label>Бүтээгдэхүүний нэр</label>
-                <input type="text" id="prodName" placeholder="Жишээ: Хар футболк эсвэл Кроссовк">
+                <input type="text" id="prodName" placeholder="Жишээ: Алтан зүүлт эсвэл Мөнгөн бөгж">
             </div>
 
             <div class="form-group">
                 <label>Ангилал сонгох</label>
                 <select id="prodCategory">
-                    <option value="Гутал">👟 Гутал</option>
-                    <option value="Технологи">📱 Технологи</option>
-                    <option value="Хувцас">👕 Хувцас</option>
-                    <option value="Аксессуар">⌚ Аксессуар</option>
-                    <option value="Бусад">📦 Бусад</option>
+                    <option value="Зүүлт">📿 Зүүлт</option>
+                    <option value="Бөгж">💍 Бөгж</option>
+                    <option value="Бугуйвч">📿 Бугуйвч</option>
+                    <option value="Ээмэг">✨ Ээмэг</option>
                 </select>
-            </div>
-
-            <div class="form-group">
-                <label>Бэлэн байгаа хэмжээ (Sizes)</label>
-                <div class="size-checkboxes">
-                    <label class="size-item"><input type="checkbox" name="prodSize" value="XS"> XS</label>
-                    <label class="size-item"><input type="checkbox" name="prodSize" value="S"> S</label>
-                    <label class="size-item"><input type="checkbox" name="prodSize" value="M"> M</label>
-                    <label class="size-item"><input type="checkbox" name="prodSize" value="L"> L</label>
-                    <label class="size-item"><input type="checkbox" name="prodSize" value="XL"> XL</label>
-                    <label class="size-item"><input type="checkbox" name="prodSize" value="2XL"> 2XL</label>
-                    <label class="size-item"><input type="checkbox" name="prodSize" value="38"> 38</label>
-                    <label class="size-item"><input type="checkbox" name="prodSize" value="39"> 39</label>
-                    <label class="size-item"><input type="checkbox" name="prodSize" value="40"> 40</label>
-                    <label class="size-item"><input type="checkbox" name="prodSize" value="41"> 41</label>
-                    <label class="size-item"><input type="checkbox" name="prodSize" value="42"> 42</label>
-                    <label class="size-item"><input type="checkbox" name="prodSize" value="43"> 43</label>
-                </div>
             </div>
 
             <div class="form-group">
@@ -423,7 +381,7 @@
 
             <div class="form-group">
                 <label>Бүтээгдэхүүний тайлбар</label>
-                <textarea id="prodDesc" placeholder="Хэмжээ, материал, онцлог шинжийг энд бичнэ үү..."></textarea>
+                <textarea id="prodDesc" placeholder="Материал, хийц, онцлог шинжийг энд бичнэ үү..."></textarea>
             </div>
 
             <div class="form-group">
@@ -437,12 +395,12 @@
             <button class="btn-add" id="btnAddProduct" onclick="window.addProduct()">＋ Шинэ бараа нэмэх</button>
         </div>
 
-        <div class="section-title"><i class="fa-solid fa-receipt" style="color: #a78bfa;"></i> Ирсэн бодит захиалгууд</div>
+        <div class="section-title"><i class="fa-solid fa-receipt" style="color: #a88867;"></i> Ирсэн бодит захиалгууд</div>
         <div class="order-list" id="adminOrderList">
             <p class="empty-text">Шинэ захиалга байхгүй байна...</p>
         </div>
 
-        <div class="section-title"><i class="fa-solid fa-chart-simple" style="color: #38bdf8;"></i> Барааны хандалт & Статистик</div>
+        <div class="section-title"><i class="fa-solid fa-chart-simple" style="color: #a88867;"></i> Барааны хандалт & Статистик</div>
         <div class="product-list" id="adminProductList">
             <p class="empty-text">Ачаалж байна...</p>
         </div>
@@ -463,30 +421,11 @@
             <div class="form-group">
                 <label>Ангилал</label>
                 <select id="editProdCategory">
-                    <option value="Гутал">👟 Гутал</option>
-                    <option value="Технологи">📱 Технологи</option>
-                    <option value="Хувцас">👕 Хувцас</option>
-                    <option value="Аксессуар">⌚ Аксессуар</option>
-                    <option value="Бусад">📦 Бусад</option>
+                    <option value="Зүүлт">📿 Зүүлт</option>
+                    <option value="Бөгж">💍 Бөгж</option>
+                    <option value="Бугуйвч">📿 Бугуйвч</option>
+                    <option value="Ээмэг">✨ Ээмэг</option>
                 </select>
-            </div>
-
-            <div class="form-group">
-                <label>Бэлэн байгаа хэмжээ (Sizes)</label>
-                <div class="size-checkboxes">
-                    <label class="size-item"><input type="checkbox" name="editProdSize" value="XS"> XS</label>
-                    <label class="size-item"><input type="checkbox" name="editProdSize" value="S"> S</label>
-                    <label class="size-item"><input type="checkbox" name="editProdSize" value="M"> M</label>
-                    <label class="size-item"><input type="checkbox" name="editProdSize" value="L"> L</label>
-                    <label class="size-item"><input type="checkbox" name="editProdSize" value="XL"> XL</label>
-                    <label class="size-item"><input type="checkbox" name="editProdSize" value="2XL"> 2XL</label>
-                    <label class="size-item"><input type="checkbox" name="editProdSize" value="38"> 38</label>
-                    <label class="size-item"><input type="checkbox" name="editProdSize" value="39"> 39</label>
-                    <label class="size-item"><input type="checkbox" name="editProdSize" value="40"> 40</label>
-                    <label class="size-item"><input type="checkbox" name="editProdSize" value="41"> 41</label>
-                    <label class="size-item"><input type="checkbox" name="editProdSize" value="42"> 42</label>
-                    <label class="size-item"><input type="checkbox" name="editProdSize" value="43"> 43</label>
-                </div>
             </div>
 
             <div class="form-group">
@@ -556,12 +495,11 @@
         function showAdminPanel() {
             document.getElementById("loginOverlay").style.display = "none";
             document.getElementById("adminMainContent").style.display = "block";
-            loadSiteVisits(); // Дэлгүүрт орсон тоог унших
+            loadSiteVisits();
             loadProducts();
             loadOrders();
         }
 
-        // Дэлгүүрт орж ирсэн нийт зочдын тоог Firebase-аас татах функц
         function loadSiteVisits() {
             database.ref('site_visits').on('value', function(snapshot) {
                 var visits = snapshot.val() || 0;
@@ -639,8 +577,6 @@
                         ? '<span class="stat-badge stat-status-out">❌ Дууссан</span>' 
                         : '<span class="stat-badge stat-status-in">✅ Бэлэн</span>';
 
-                    var sizesText = (prod.sizes && prod.sizes.length > 0) ? prod.sizes.join(', ') : 'Байхгүй';
-
                     var row = document.createElement("div");
                     row.className = "admin-prod-card";
                     row.innerHTML = 
@@ -652,8 +588,7 @@
                             '<div class="stats-container">' +
                                 statusBadge +
                                 '<span class="stat-badge stat-stock">📦 Үлдэгдэл: ' + stockCount + '</span>' +
-                                '<span class="stat-badge stat-category">🏷️ ' + (prod.category || 'Гутал') + '</span>' +
-                                '<span class="stat-badge stat-sizes">📏 ' + sizesText + '</span>' +
+                                '<span class="stat-badge stat-category">🏷️ ' + (prod.category || 'Зүүлт') + '</span>' +
                                 '<span class="stat-badge stat-views"><i class="fa-regular fa-eye"></i> ' + (prod.views || 0) + '</span>' +
                                 '<span class="stat-badge stat-orders"><i class="fa-solid fa-cart-shopping"></i> ' + (prod.orders || 0) + '</span>' +
                             '</div>' +
@@ -705,12 +640,6 @@
 
             var stock = parseInt(stockVal) >= 0 ? parseInt(stockVal) : 14;
 
-            // Сонгогдсон хэмжээг цуглуулах
-            var selectedSizes = [];
-            document.querySelectorAll('input[name="prodSize"]:checked').forEach(cb => {
-                selectedSizes.push(cb.value);
-            });
-
             if (selectedBase64Images.length === 0) { alert("Барааны зургийг оруулна уу!"); return; }
             if (!name || !price) { alert("Нэр болон үнийг оруулна уу!"); return; }
 
@@ -725,7 +654,6 @@
                 stock: stock,
                 description: description,
                 status: status,
-                sizes: selectedSizes,
                 views: 0,
                 orders: 0
             }).then(function() {
@@ -738,9 +666,6 @@
                 document.getElementById("prodStock").value = "14";
                 document.getElementById("prodDesc").value = "";
                 document.getElementById("prodStatus").value = "in_stock";
-                
-                // Checkbox-уудыг цэвэрлэх
-                document.querySelectorAll('input[name="prodSize"]').forEach(cb => cb.checked = false);
 
                 selectedBase64Images = [];
             }).finally(function() {
@@ -748,24 +673,17 @@
             });
         };
 
-        /* EDIT MODAL СУУРЬ ФУНКЦҮҮД */
         window.openEditModal = function(prodId) {
             var prod = allProductsCache[prodId];
             if(!prod) return;
 
             document.getElementById("editProdId").value = prodId;
             document.getElementById("editProdName").value = prod.name || "";
-            document.getElementById("editProdCategory").value = prod.category || "Гутал";
+            document.getElementById("editProdCategory").value = prod.category || "Зүүлт";
             document.getElementById("editProdPrice").value = prod.price || 0;
             document.getElementById("editProdStock").value = (prod.stock !== undefined) ? prod.stock : 14;
             document.getElementById("editProdDesc").value = prod.description || "";
             document.getElementById("editProdStatus").value = prod.status || "in_stock";
-
-            // Хэмжээг тохируулах Checkboxes
-            var currentSizes = prod.sizes || [];
-            document.querySelectorAll('input[name="editProdSize"]').forEach(cb => {
-                cb.checked = currentSizes.includes(cb.value);
-            });
 
             document.getElementById("editModal").style.display = "flex";
         };
@@ -785,11 +703,6 @@
 
             var stock = parseInt(stockVal) >= 0 ? parseInt(stockVal) : 0;
 
-            var selectedSizes = [];
-            document.querySelectorAll('input[name="editProdSize"]:checked').forEach(cb => {
-                selectedSizes.push(cb.value);
-            });
-
             if(!name || !price) {
                 alert("Нэр болон үнийг заавал бичнэ үү!");
                 return;
@@ -803,8 +716,7 @@
                 price: numericPrice,
                 stock: stock,
                 description: description,
-                status: status,
-                sizes: selectedSizes
+                status: status
             }).then(() => {
                 alert("Барааны мэдээлэл амжилттай шинэчлэгдлээ! ✨");
                 window.closeEditModal();
