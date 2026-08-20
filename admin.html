@@ -19,17 +19,12 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Нэвтрэх цонх */
         .login-overlay { 
             position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
+            top: 0; left: 0; 
+            width: 100%; height: 100%; 
             background-color: #0b1329; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
+            display: flex; justify-content: center; align-items: center; 
             z-index: 9999; 
         }
         .login-box { 
@@ -37,158 +32,99 @@
             border: 1px solid #1e2d54; 
             padding: 30px 24px; 
             border-radius: 20px; 
-            width: 90%; 
-            max-width: 380px; 
+            width: 90%; max-width: 380px; 
             text-align: center; 
             box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
         .login-box h3 { margin-bottom: 15px; font-weight: 800; color: #ffffff; font-size: 18px; }
         .login-box input { 
-            width: 100%; 
-            padding: 12px; 
-            border: 1px solid #2a3c6e; 
-            border-radius: 10px; 
-            margin-bottom: 15px; 
-            outline: none; 
-            font-size: 16px; 
-            text-align: center; 
-            background: #0b1329; 
-            color: #ffffff; 
+            width: 100%; padding: 12px; 
+            border: 1px solid #2a3c6e; border-radius: 10px; 
+            margin-bottom: 15px; outline: none; font-size: 16px; 
+            text-align: center; background: #0b1329; color: #ffffff; 
         }
         .login-box input:focus { border-color: #3b82f6; }
         .btn-login { 
-            background: #2563eb; 
-            color: white; 
-            border: none; 
-            padding: 12px; 
-            width: 100%; 
-            border-radius: 10px; 
-            font-size: 15px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            transition: 0.2s;
+            background: #2563eb; color: white; border: none; 
+            padding: 12px; width: 100%; border-radius: 10px; 
+            font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s;
         }
         .btn-login:hover { background: #1d4ed8; }
 
-        /* Үндсэн Админ самбар */
         .admin-main-content { display: none; width: 100%; max-width: 650px; }
         .header-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
         .header-left { display: flex; align-items: center; gap: 12px; }
         .btn-back { 
-            background: #131e3a; 
-            border: 1px solid #2a3c6e; 
-            width: 40px; 
-            height: 40px; 
-            border-radius: 12px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: #ffffff; 
-            text-decoration: none; 
-            font-size: 16px; 
+            background: #131e3a; border: 1px solid #2a3c6e; 
+            width: 40px; height: 40px; border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; 
+            color: #ffffff; text-decoration: none; font-size: 16px; 
         }
         .btn-back:hover { background: #1e2d54; }
         .btn-logout {
-            background: rgba(239, 68, 68, 0.15);
-            color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            padding: 8px 14px;
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.2s;
+            background: rgba(239, 68, 68, 0.15); color: #ef4444; 
+            border: 1px solid rgba(239, 68, 68, 0.3); 
+            padding: 8px 14px; border-radius: 10px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.2s;
         }
         .btn-logout:hover { background: #ef4444; color: white; }
         h2 { font-size: 18px; font-weight: 800; color: #ffffff; }
 
-        /* Сайт руу орсон хүний тоог харуулах карт */
         .site-visit-card {
-            background: #131e3a;
-            border: 1px solid #1e2d54;
-            border-radius: 20px;
-            padding: 18px;
-            margin-bottom: 20px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            background: #131e3a; border: 1px solid #1e2d54; 
+            border-radius: 20px; padding: 18px; margin-bottom: 20px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
-        .site-visit-title {
-            font-size: 12px;
-            color: #94a3b8;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .site-visit-count {
-            font-size: 32px;
-            font-weight: 800;
-            color: #60a5fa;
-            margin-top: 4px;
-        }
+        .site-visit-title { font-size: 12px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .site-visit-count { font-size: 32px; font-weight: 800; color: #60a5fa; margin-top: 4px; }
 
         .admin-box { 
-            background-color: #131e3a; 
-            border: 1px solid #1e2d54; 
-            padding: 20px; 
-            border-radius: 20px; 
-            width: 100%; 
-            margin-bottom: 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            background-color: #131e3a; border: 1px solid #1e2d54; 
+            padding: 20px; border-radius: 20px; width: 100%; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .form-group { margin-bottom: 18px; }
         .form-group label { display: block; font-size: 11px; font-weight: 700; color: #60a5fa; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
         .form-group input, .form-group select, .form-group textarea { 
-            width: 100%; 
-            padding: 12px; 
-            border: 1px solid #2a3c6e; 
-            border-radius: 10px; 
-            font-size: 14px; 
-            background-color: #0b1329; 
-            color: #ffffff; 
-            outline: none; 
-            font-family: inherit;
+            width: 100%; padding: 12px; border: 1px solid #2a3c6e; 
+            border-radius: 10px; font-size: 14px; background-color: #0b1329; color: #ffffff; outline: none; font-family: inherit;
         }
         .form-group textarea { resize: vertical; min-height: 80px; }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #3b82f6; }
 
-        /* Sizes Checkbox хэсэг */
-        .size-checkbox-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 5px;
+        /* Sizes & Stocks Талбар */
+        .size-stock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+            gap: 10px;
+            margin-top: 6px;
         }
-        .size-item {
-            display: flex;
-            align-items: center;
+        .size-stock-card {
             background: #0b1329;
             border: 1px solid #2a3c6e;
-            padding: 8px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            user-select: none;
-            transition: 0.2s;
+            padding: 8px;
+            border-radius: 10px;
+            text-align: center;
         }
-        .size-item:hover { border-color: #3b82f6; }
-        .size-item input[type="checkbox"] {
-            width: auto;
-            margin-right: 6px;
-            cursor: pointer;
-            accent-color: #2563eb;
+        .size-stock-card span {
+            font-size: 12px;
+            font-weight: bold;
+            color: #60a5fa;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .size-stock-card input {
+            width: 100%;
+            padding: 6px;
+            text-align: center;
+            font-size: 13px;
+            border-radius: 6px;
+            border: 1px solid #1e2d54;
+            background: #131e3a;
+            color: #fff;
         }
 
         .file-input-wrapper { 
-            background-color: #0b1329; 
-            border: 2px dashed #2a3c6e; 
-            padding: 20px; 
-            border-radius: 12px; 
-            text-align: center; 
-            cursor: pointer; 
-            position: relative; 
-            color: #94a3b8;
-            font-size: 13px;
-            font-weight: 600;
+            background-color: #0b1329; border: 2px dashed #2a3c6e; 
+            padding: 20px; border-radius: 12px; text-align: center; cursor: pointer; position: relative; color: #94a3b8; font-size: 13px; font-weight: 600;
         }
         .file-input-wrapper input[type="file"] { position: absolute; left: 0; top: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
 
@@ -196,35 +132,14 @@
         .preview-item { position: relative; width: 70px; height: 70px; }
         .preview-thumbnail { width: 100%; height: 100%; border-radius: 8px; object-fit: cover; border: 1px solid #2a3c6e; }
         .remove-img-btn { 
-            position: absolute; 
-            top: -6px; 
-            right: -6px; 
-            background: #ef4444; 
-            color: white; 
-            border: none; 
-            border-radius: 50%; 
-            width: 20px; 
-            height: 20px; 
-            font-size: 11px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
+            position: absolute; top: -6px; right: -6px; 
+            background: #ef4444; color: white; border: none; border-radius: 50%; 
+            width: 20px; height: 20px; font-size: 11px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; 
         }
 
         .btn-add { 
-            background: #2563eb; 
-            color: white; 
-            border: none; 
-            padding: 14px; 
-            width: 100%; 
-            border-radius: 12px; 
-            font-size: 15px; 
-            font-weight: bold; 
-            cursor: pointer; 
-            margin-top: 10px; 
-            transition: 0.2s;
+            background: #2563eb; color: white; border: none; padding: 14px; 
+            width: 100%; border-radius: 12px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: 0.2s;
         }
         .btn-add:hover { background: #1d4ed8; }
 
@@ -233,16 +148,9 @@
         .product-list, .order-list { width: 100%; }
 
         .admin-prod-card, .order-card { 
-            background: #131e3a; 
-            border: 1px solid #1e2d54; 
-            border-radius: 16px; 
-            padding: 14px; 
-            margin-bottom: 12px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: space-between; 
-            gap: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            background: #131e3a; border: 1px solid #1e2d54; 
+            border-radius: 16px; padding: 14px; margin-bottom: 12px; 
+            display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
         .order-card { flex-direction: column; align-items: flex-start; }
@@ -270,90 +178,40 @@
         .prod-actions { display: flex; flex-direction: column; gap: 6px; }
 
         .btn-edit { 
-            background-color: rgba(59, 130, 246, 0.15); 
-            color: #60a5fa; 
-            border: 1px solid rgba(59, 130, 246, 0.3); 
-            padding: 6px 10px; 
-            border-radius: 8px; 
-            font-size: 11px; 
-            font-weight: 700; 
-            cursor: pointer; 
-            transition: 0.2s;
+            background-color: rgba(59, 130, 246, 0.15); color: #60a5fa; 
+            border: 1px solid rgba(59, 130, 246, 0.3); padding: 6px 10px; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; transition: 0.2s;
         }
         .btn-edit:hover { background-color: #2563eb; color: white; }
 
         .btn-delete { 
-            background-color: rgba(239, 68, 68, 0.15); 
-            color: #ef4444; 
-            border: 1px solid rgba(239, 68, 68, 0.3); 
-            padding: 6px 10px; 
-            border-radius: 8px; 
-            font-size: 11px; 
-            font-weight: 700; 
-            cursor: pointer; 
-            transition: 0.2s;
+            background-color: rgba(239, 68, 68, 0.15); color: #ef4444; 
+            border: 1px solid rgba(239, 68, 68, 0.3); padding: 6px 10px; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; transition: 0.2s;
         }
         .btn-delete:hover { background-color: #ef4444; color: white; }
 
         .btn-complete { 
-            background-color: #10b981; 
-            color: white; 
-            border: none; 
-            padding: 10px 16px; 
-            border-radius: 8px; 
-            font-size: 12px; 
-            font-weight: 700; 
-            cursor: pointer; 
-            width: 100%; 
-            margin-top: 8px; 
-            transition: 0.2s;
+            background-color: #10b981; color: white; border: none; 
+            padding: 10px 16px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; width: 100%; margin-top: 8px; transition: 0.2s;
         }
         .btn-complete:hover { background-color: #059669; }
 
         .empty-text { 
-            color:#94a3b8; 
-            font-size:14px; 
-            text-align:center; 
-            padding: 25px; 
-            background: #131e3a; 
-            border-radius:16px; 
-            border: 1px solid #1e2d54; 
-            width: 100%;
+            color:#94a3b8; font-size:14px; text-align:center; padding: 25px; 
+            background: #131e3a; border-radius:16px; border: 1px solid #1e2d54; width: 100%;
         }
 
-        /* Edit Modal (Засах цонх) */
         .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(11, 19, 41, 0.8);
-            backdrop-filter: blur(5px);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-            padding: 20px;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 19, 41, 0.8); backdrop-filter: blur(5px);
+            display: none; justify-content: center; align-items: center; z-index: 10000; padding: 20px;
         }
         .modal-box {
-            background: #131e3a;
-            border: 1px solid #1e2d54;
-            border-radius: 20px;
-            padding: 24px;
-            width: 100%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            background: #131e3a; border: 1px solid #1e2d54; border-radius: 20px;
+            padding: 24px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
         .modal-header h3 { font-size: 18px; color: #ffffff; }
-        .btn-close-modal {
-            background: none; border: none; color: #94a3b8; font-size: 20px; cursor: pointer;
-        }
+        .btn-close-modal { background: none; border: none; color: #94a3b8; font-size: 20px; cursor: pointer; }
         .btn-save-edit {
             background: #2563eb; color: white; border: none; padding: 12px; width: 100%;
             border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; margin-top: 10px;
@@ -401,7 +259,7 @@
             </div>
 
             <div class="form-group">
-                <label>Ангилал сонгох (Индекстэй ижил)</label>
+                <label>Ангилал сонгох</label>
                 <select id="prodCategory">
                     <option value="Спорт хувцас">👕 Спорт хувцас</option>
                     <option value="Спорт гутал">👟 Спорт гутал</option>
@@ -413,26 +271,21 @@
             </div>
 
             <div class="form-group">
-                <label>Боломжит хэмжээнүүд (Sizes)</label>
-                <div class="size-checkbox-group" id="addSizeGroup">
-                    <label class="size-item"><input type="checkbox" value="XS"> XS</label>
-                    <label class="size-item"><input type="checkbox" value="S"> S</label>
-                    <label class="size-item"><input type="checkbox" value="M"> M</label>
-                    <label class="size-item"><input type="checkbox" value="L"> L</label>
-                    <label class="size-item"><input type="checkbox" value="XL"> XL</label>
-                    <label class="size-item"><input type="checkbox" value="XXL"> XXL</label>
-                    <label class="size-item"><input type="checkbox" value="XXXL"> XXXL</label>
+                <label>Хэмжээ тус бүрийн үлдэгдэл тоо (0 бол байхгүй гэж үзнэ)</label>
+                <div class="size-stock-grid" id="addSizeStockGroup">
+                    <div class="size-stock-card"><span>XS</span><input type="number" data-size="XS" min="0" value="0"></div>
+                    <div class="size-stock-card"><span>S</span><input type="number" data-size="S" min="0" value="0"></div>
+                    <div class="size-stock-card"><span>M</span><input type="number" data-size="M" min="0" value="0"></div>
+                    <div class="size-stock-card"><span>L</span><input type="number" data-size="L" min="0" value="0"></div>
+                    <div class="size-stock-card"><span>XL</span><input type="number" data-size="XL" min="0" value="0"></div>
+                    <div class="size-stock-card"><span>XXL</span><input type="number" data-size="XXL" min="0" value="0"></div>
+                    <div class="size-stock-card"><span>3XL</span><input type="number" data-size="XXXL" min="0" value="0"></div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Бүтээгдэхүүний үнэ (₮)</label>
                 <input type="text" id="prodPrice" placeholder="Жишээ: 85,000">
-            </div>
-
-            <div class="form-group">
-                <label>Үлдэгдэл тоо (Stock)</label>
-                <input type="number" id="prodStock" placeholder="Жишээ: 10" value="10">
             </div>
 
             <div class="form-group">
@@ -462,7 +315,6 @@
         </div>
     </div>
 
-    <!-- Edit Modal (Засах цонх) -->
     <div id="editModal" class="modal-overlay">
         <div class="modal-box">
             <div class="modal-header">
@@ -484,30 +336,26 @@
                     <option value="Тоног төхөөрөмж">🏋️ Тоног төхөөрөмж</option>
                     <option value="Спорт цүнх">🎒 Спорт цүнх</option>
                     <option value="Дагалдах хэрэгсэл">🎧 Дагалдах хэрэгсэл</option>
+                    <option value="Бусад">🔄 Бусад</option>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>Хэмжээнүүд (Sizes)</label>
-                <div class="size-checkbox-group" id="editSizeGroup">
-                    <label class="size-item"><input type="checkbox" value="XS"> XS</label>
-                    <label class="size-item"><input type="checkbox" value="S"> S</label>
-                    <label class="size-item"><input type="checkbox" value="M"> M</label>
-                    <label class="size-item"><input type="checkbox" value="L"> L</label>
-                    <label class="size-item"><input type="checkbox" value="XL"> XL</label>
-                    <label class="size-item"><input type="checkbox" value="XXL"> XXL</label>
-                    <label class="size-item"><input type="checkbox" value="XXXL"> XXXL</label>
+                <label>Хэмжээ тус бүрийн үлдэгдэл тоо</label>
+                <div class="size-stock-grid" id="editSizeStockGroup">
+                    <div class="size-stock-card"><span>XS</span><input type="number" data-size="XS" min="0" value="0"></div>
+                    <div class="size-stock-card"><span>S</span><input type="number" data-size="S" min="0" value="0"></div>
+                    <div class="size-stock-card"><span>M</span><input type="number" data-size="M" min="0" value="0"></div>
+                    <div class="size-stock-card"><span>L</span><input type="number" data-size="L" min="0" value="0"></div>
+                    <div class="size-stock-card"><span>XL</span><input type="number" data-size="XL" min="0" value="0"></div>
+                    <div class="size-stock-card"><span>XXL</span><input type="number" data-size="XXL" min="0" value="0"></div>
+                    <div class="size-stock-card"><span>3XL</span><input type="number" data-size="XXXL" min="0" value="0"></div>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Үнэ (₮)</label>
                 <input type="text" id="editProdPrice">
-            </div>
-
-            <div class="form-group">
-                <label>Үлдэгдэл тоо (Stock)</label>
-                <input type="number" id="editProdStock">
             </div>
 
             <div class="form-group">
@@ -555,10 +403,8 @@
             });
         });
 
-        // Нууц үг шалгах хэсэг
         window.checkAdminPassword = function() {
             var enteredPass = document.getElementById("adminPasswordInput").value;
-            // Шинэ тохируулсан нууц үг
             if(enteredPass === "2026@0917&temka") {
                 localStorage.setItem("admin_authenticated", "true");
                 showAdminPanel();
@@ -568,7 +414,6 @@
             }
         };
 
-        // Системээс гарах (Logout)
         window.adminLogout = function() {
             localStorage.removeItem("admin_authenticated");
             location.reload();
@@ -599,7 +444,6 @@
                     reader.onload = function(e) {
                         selectedBase64Images.push(e.target.result);
                         filesProcessed++;
-
                         if(filesProcessed === currentFilesCount) {
                             renderThumbnails();
                         }
@@ -613,11 +457,9 @@
         function renderThumbnails() {
             var container = document.getElementById("imagePreviewContainer");
             container.innerHTML = "";
-
             selectedBase64Images.forEach((imgSrc, index) => {
                 var itemDiv = document.createElement("div");
                 itemDiv.className = "preview-item";
-
                 itemDiv.innerHTML = `
                     <img src="${imgSrc}" class="preview-thumbnail">
                     <button type="button" class="remove-img-btn" onclick="window.removeSelectedImage(${index})">✕</button>
@@ -637,19 +479,40 @@
             renderThumbnails();
         };
 
-        function getSelectedSizes(groupId) {
-            var checkboxes = document.querySelectorAll('#' + groupId + ' input[type="checkbox"]:checked');
-            var sizes = [];
-            checkboxes.forEach(function(cb) {
-                sizes.push(cb.value);
+        function getSizeStocksData(groupId) {
+            var inputs = document.querySelectorAll('#' + groupId + ' input[data-size]');
+            var sizeStocks = {};
+            var availableSizes = [];
+            var totalStock = 0;
+
+            inputs.forEach(function(input) {
+                var size = input.getAttribute('data-size');
+                var count = parseInt(input.value) || 0;
+                sizeStocks[size] = count;
+                if (count > 0) {
+                    availableSizes.push(size);
+                    totalStock += count;
+                }
             });
-            return sizes;
+
+            return {
+                sizeStocks: sizeStocks,
+                sizes: availableSizes,
+                totalStock: totalStock
+            };
         }
 
-        function setSelectedSizes(groupId, sizesArray) {
-            var checkboxes = document.querySelectorAll('#' + groupId + ' input[type="checkbox"]');
-            checkboxes.forEach(function(cb) {
-                cb.checked = sizesArray && sizesArray.includes(cb.value);
+        function setSizeStocksData(groupId, sizeStocks, sizesArray) {
+            var inputs = document.querySelectorAll('#' + groupId + ' input[data-size]');
+            inputs.forEach(function(input) {
+                var size = input.getAttribute('data-size');
+                if (sizeStocks && sizeStocks[size] !== undefined) {
+                    input.value = sizeStocks[size];
+                } else if (sizesArray && sizesArray.includes(size)) {
+                    input.value = 1;
+                } else {
+                    input.value = 0;
+                }
             });
         }
 
@@ -668,14 +531,28 @@
                     allProductsCache[prodId] = prod;
 
                     var mainImg = (prod.images && prod.images.length > 0) ? prod.images[0] : 'https://via.placeholder.com/65';
-                    var stockCount = (prod.stock !== undefined) ? prod.stock : 10;
-                    var isOutOfStock = prod.status === 'out_of_stock' || stockCount <= 0;
                     
+                    var totalStock = 0;
+                    var sizeDetailsStr = "";
+
+                    if (prod.sizeStocks) {
+                        Object.keys(prod.sizeStocks).forEach(sz => {
+                            var qty = prod.sizeStocks[sz];
+                            if (qty > 0) {
+                                totalStock += qty;
+                                sizeDetailsStr += `${sz}:${qty}ш `;
+                            }
+                        });
+                    } else if (prod.stock !== undefined) {
+                        totalStock = prod.stock;
+                    }
+
+                    var isOutOfStock = prod.status === 'out_of_stock' || totalStock <= 0;
                     var statusBadge = isOutOfStock 
                         ? '<span class="stat-badge stat-status-out">❌ Дууссан</span>' 
                         : '<span class="stat-badge stat-status-in">✅ Бэлэн</span>';
 
-                    var sizesText = (prod.sizes && prod.sizes.length > 0) ? prod.sizes.join(', ') : 'Байхгүй';
+                    var sizesText = sizeDetailsStr.trim() || ((prod.sizes && prod.sizes.length > 0) ? prod.sizes.join(', ') : 'Байхгүй');
 
                     var row = document.createElement("div");
                     row.className = "admin-prod-card";
@@ -689,7 +566,7 @@
                                 statusBadge +
                                 '<span class="stat-badge stat-category">🏷️ ' + (prod.category || 'Спорт хувцас') + '</span>' +
                                 '<span class="stat-badge stat-sizes">📏 ' + sizesText + '</span>' +
-                                '<span class="stat-badge stat-stock">📦 Үлдэгдэл: ' + stockCount + '</span>' +
+                                '<span class="stat-badge stat-stock">📦 Нийт: ' + totalStock + '</span>' +
                                 '<span class="stat-badge stat-views"><i class="fa-regular fa-eye"></i> ' + (prod.views || 0) + '</span>' +
                                 '<span class="stat-badge stat-orders"><i class="fa-solid fa-cart-shopping"></i> ' + (prod.orders || 0) + '</span>' +
                             '</div>' +
@@ -714,6 +591,10 @@
                 snapshot.forEach(function(childSnapshot) {
                     var orderId = childSnapshot.key;
                     var order = childSnapshot.val();
+                    
+                    var prodId = order.productId || '';
+                    var size = order.selectedSize || order.size || '';
+
                     var card = document.createElement("div");
                     card.className = "order-card";
                     card.innerHTML = 
@@ -721,11 +602,11 @@
                             '<div class="order-row"><b>📧 Gmail:</b> ' + (order.email || 'Байхгүй') + '</div>' +
                             '<div class="order-row"><b>📞 Утас:</b> ' + (order.phone || 'Байхгүй') + '</div>' +
                             '<div class="order-row"><b>📦 Бараа:</b> ' + (order.items || order.productName || 'Мэдээлэлгүй') + '</div>' +
-                            '<div class="order-row"><b>📏 Сонгосон хэмжээ:</b> ' + (order.selectedSize || 'Сонгоогүй') + '</div>' +
+                            '<div class="order-row"><b>📏 Сонгосон хэмжээ:</b> ' + (size || 'Сонгоогүй') + '</div>' +
                             '<div class="order-row"><b>📍 Хаяг:</b> ' + (order.address || 'Байхгүй') + '</div>' +
                             '<div class="order-row" style="margin-top:6px;"><b>Гүйлгээний утга:</b> <span class="order-code-badge">' + (order.orderCode || 'Байхгүй') + '</span></div>' +
                         '</div>' +
-                        '<button class="btn-complete" onclick="window.completeOrder(\'' + orderId + '\', \'' + (order.productId || '') + '\')">✅ Хүргэгдсэн (Хаах)</button>';
+                        '<button class="btn-complete" onclick="window.completeOrder(\'' + orderId + '\', \'' + prodId + '\', \'' + size + '\')">✅ Хүргэгдсэн (Хаах)</button>';
                     orderDiv.appendChild(card);
                 });
             });
@@ -737,11 +618,9 @@
             var category = document.getElementById("prodCategory").value;
             var description = document.getElementById("prodDesc").value.trim();
             var status = document.getElementById("prodStatus").value;
-            var stockVal = document.getElementById("prodStock").value;
-            var sizes = getSelectedSizes('addSizeGroup');
             var btn = document.getElementById("btnAddProduct");
 
-            var stock = parseInt(stockVal) >= 0 ? parseInt(stockVal) : 10;
+            var stockData = getSizeStocksData('addSizeStockGroup');
 
             if (selectedBase64Images.length === 0) { alert("Барааны зургийг оруулна уу!"); return; }
             if (!name || !price) { alert("Нэр болон үнийг оруулна уу!"); return; }
@@ -753,11 +632,12 @@
                 images: selectedBase64Images,
                 name: name,
                 category: category,
-                sizes: sizes,
+                sizes: stockData.sizes,
+                sizeStocks: stockData.sizeStocks,
                 price: numericPrice,
-                stock: stock,
+                stock: stockData.totalStock,
                 description: description,
-                status: status,
+                status: stockData.totalStock === 0 ? 'out_of_stock' : status,
                 views: 0,
                 orders: 0
             }).then(function() {
@@ -767,10 +647,9 @@
                 document.getElementById("uploadStatusText").innerText = "📁 Энд дарж зургуудаа нэмнэ үү";
                 document.getElementById("prodName").value = "";
                 document.getElementById("prodPrice").value = "";
-                document.getElementById("prodStock").value = "10";
                 document.getElementById("prodDesc").value = "";
                 document.getElementById("prodStatus").value = "in_stock";
-                setSelectedSizes('addSizeGroup', []);
+                setSizeStocksData('addSizeStockGroup', {}, []);
 
                 selectedBase64Images = [];
             }).finally(function() {
@@ -786,11 +665,10 @@
             document.getElementById("editProdName").value = prod.name || "";
             document.getElementById("editProdCategory").value = prod.category || "Спорт хувцас";
             document.getElementById("editProdPrice").value = prod.price || 0;
-            document.getElementById("editProdStock").value = (prod.stock !== undefined) ? prod.stock : 10;
             document.getElementById("editProdDesc").value = prod.description || "";
             document.getElementById("editProdStatus").value = prod.status || "in_stock";
 
-            setSelectedSizes('editSizeGroup', prod.sizes || []);
+            setSizeStocksData('editSizeStockGroup', prod.sizeStocks, prod.sizes);
 
             document.getElementById("editModal").style.display = "flex";
         };
@@ -804,12 +682,10 @@
             var name = document.getElementById("editProdName").value.trim();
             var category = document.getElementById("editProdCategory").value;
             var price = document.getElementById("editProdPrice").value.toString().trim();
-            var stockVal = document.getElementById("editProdStock").value;
             var description = document.getElementById("editProdDesc").value.trim();
             var status = document.getElementById("editProdStatus").value;
-            var sizes = getSelectedSizes('editSizeGroup');
-
-            var stock = parseInt(stockVal) >= 0 ? parseInt(stockVal) : 0;
+            
+            var stockData = getSizeStocksData('editSizeStockGroup');
 
             if(!name || !price) {
                 alert("Нэр болон үнийг заавал бичнэ үү!");
@@ -821,11 +697,12 @@
             database.ref('products/' + prodId).update({
                 name: name,
                 category: category,
-                sizes: sizes,
+                sizes: stockData.sizes,
+                sizeStocks: stockData.sizeStocks,
                 price: numericPrice,
-                stock: stock,
+                stock: stockData.totalStock,
                 description: description,
-                status: status
+                status: stockData.totalStock === 0 ? 'out_of_stock' : status
             }).then(() => {
                 alert("Барааны мэдээлэл амжилттай шинэчлэгдлээ! ✨");
                 window.closeEditModal();
@@ -840,25 +717,55 @@
             }
         };
 
-        window.completeOrder = function(orderId, productId) {
-            if(confirm("Энэ захиалгыг хүргэгдсэн гэж хаах уу?")) {
-                if (productId) {
-                    database.ref('products/' + productId).transaction(function(product) {
-                        if (product) {
-                            var currentStock = (product.stock !== undefined) ? product.stock : 10;
-                            var newStock = currentStock > 0 ? currentStock - 1 : 0;
-                            product.stock = newStock;
-                            
-                            if (newStock === 0) {
-                                product.status = 'out_of_stock';
-                            }
-                            product.orders = (product.orders || 0) + 1;
-                        }
-                        return product;
-                    });
-                }
+        window.completeOrder = function(orderId, productId, selectedSize) {
+            if (!productId || productId === 'null' || productId === 'undefined') {
+                alert("⚠️ Анхаар: Захиалга дээр productId байхгүй тул үлдэгдэл хасах боломжгүй! Шууд хаалаа.");
+                database.ref('orders/' + orderId).remove();
+                return;
+            }
 
-                database.ref('orders/' + orderId).remove().then(() => alert("Захиалга хаагдаж, үлдэгдэл тоо хасагдлаа! 🤝"));
+            if (confirm("Энэ захиалгыг хүргэгдсэн гэж хааж, үлдэгдлийг хасах уу?")) {
+                var cleanSize = selectedSize ? selectedSize.toString().trim().toUpperCase() : '';
+
+                database.ref('products/' + productId).transaction(function(product) {
+                    if (product) {
+                        if (cleanSize && product.sizeStocks && product.sizeStocks[cleanSize] > 0) {
+                            product.sizeStocks[cleanSize] -= 1;
+                        }
+
+                        var totalStock = 0;
+                        var activeSizes = [];
+
+                        if (product.sizeStocks) {
+                            Object.keys(product.sizeStocks).forEach(function(s) {
+                                var qty = product.sizeStocks[s] || 0;
+                                if (qty > 0) {
+                                    totalStock += qty;
+                                    activeSizes.push(s);
+                                }
+                            });
+                            product.stock = totalStock;
+                            product.sizes = activeSizes;
+                        } else if (product.stock > 0) {
+                            product.stock -= 1;
+                        }
+
+                        if (product.stock <= 0) {
+                            product.status = 'out_of_stock';
+                        }
+
+                        product.orders = (product.orders || 0) + 1;
+                    }
+                    return product;
+                }, function(error, committed, snapshot) {
+                    if (error) {
+                        alert("❌ Алдаа гарлаа: " + error.message);
+                    } else if (committed) {
+                        database.ref('orders/' + orderId).remove().then(function() {
+                            alert("✅ Захиалга амжилттай хаагдаж, үлдэгдэл хасагдлаа!");
+                        });
+                    }
+                });
             }
         };
     </script>

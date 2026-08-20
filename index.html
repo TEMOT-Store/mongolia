@@ -72,7 +72,7 @@
             color: #38bdf8; 
         }
 
-        /* Сагсны товчлуурын хэлбэрийг зассан хэсэг */
+        /* Сагсны товчлуурын хэлбэр */
         .cart-status {
             font-weight: 700;
             font-size: 12px;
@@ -87,7 +87,7 @@
             border-radius: 20px;
             border: 1px solid #334155;
             transition: all 0.3s ease;
-            white-space: nowrap; /* Бичгийг доошоо хоёр мөр болж унахаас сэргийлнэ */
+            white-space: nowrap;
             line-height: 1;
         }
 
@@ -254,7 +254,7 @@
             color: #f1f5f9; 
         }
 
-        /* Compact Product Cards */
+        /* Product Cards */
         .section-header { 
             margin-bottom: 14px; 
             text-align: left;
@@ -789,6 +789,7 @@
         let currentActiveProdId = "";
         let currentActiveProdName = "";
         let currentActiveProdPrice = 0;
+        let currentActiveProdSize = "M"; // Зассан: Сонгосон хэмжээг тусад нь хадгалах хувьсагч
         let selectedDetailSize = ""; 
         let allProductsArray = []; 
         let currentImagesArray = [];
@@ -825,11 +826,18 @@
             }
         };
 
+        // Зассан хэсэг: Дууссан (0 ба түүнээс бага) Size-уудыг автоматаар хасна
         function getParsedSizes(prod) {
+            // 1. Хэрэв sizeStocks объект байвал зөвхөн тоо нь 0-ээс их хэмжээнүүдийг авна
+            if (prod.sizeStocks && typeof prod.sizeStocks === 'object') {
+                return Object.keys(prod.sizeStocks).filter(size => parseInt(prod.sizeStocks[size]) > 0);
+            }
+            // 2. Бусад форматаар байвал
             if (prod.sizes && Array.isArray(prod.sizes) && prod.sizes.length > 0) return prod.sizes;
             if (prod.sizes && typeof prod.sizes === 'string') return prod.sizes.split(',').map(s => s.trim()).filter(s => s);
             if (prod.size) return [prod.size];
-            return [''];
+            
+            return [];
         }
 
         window.selectSize = function(btn, size, event) {
@@ -877,17 +885,23 @@
                 var prodId = item.id;
                 var prod = item.data || {};
                 var prodName = prod.name ? String(prod.name) : 'Нэргүй бараа';
+                
+                var availableSizes = getParsedSizes(prod);
                 var stockCount = (prod.stock !== undefined && prod.stock !== null) ? parseInt(prod.stock) : 14;
-                var isOutOfStock = prod.status === 'out_of_stock' || stockCount <= 0;
+                
+                // Боломжит хэмжээ үлдээгүй эсвэл ерөнхий stock 0 бол дууссан гэж үзнэ
+                var isOutOfStock = prod.status === 'out_of_stock' || stockCount <= 0 || availableSizes.length === 0;
+                
                 var rawPrice = (prod.price !== undefined && prod.price !== null) ? String(prod.price) : "0";
                 var numericPrice = parseInt(rawPrice.replace(/[^0-9]/g, '')) || 0;
                 
                 var imgUrl = (Array.isArray(prod.images) && prod.images.length > 0) ? prod.images[0] : (prod.image || 'https://via.placeholder.com/200');
-                var availableSizes = getParsedSizes(prod);
 
                 var card = document.createElement("div");
                 card.className = "product-card" + (isOutOfStock ? " out-of-stock" : "");
-                card.setAttribute('data-selected-size', availableSizes[0]);
+                if (availableSizes.length > 0) {
+                    card.setAttribute('data-selected-size', availableSizes[0]);
+                }
 
                 var wishBtn = document.createElement("button");
                 wishBtn.className = "wishlist-btn";
@@ -909,11 +923,15 @@
 
                 var sizeWrapper = document.createElement("div");
                 sizeWrapper.className = "size-selection-wrapper";
-                var sizeButtonsHtml = availableSizes.map(function(s, index) {
-                    return '<button type="button" class="size-btn ' + (index === 0 ? 'selected' : '') + '" onclick="window.selectSize(this, \'' + s + '\', event)">' + s + '</button>';
-                }).join('');
 
-                sizeWrapper.innerHTML = '<div class="size-label">Хэмжээ сонгох:</div><div class="size-buttons-group">' + sizeButtonsHtml + '</div>';
+                if (availableSizes.length > 0) {
+                    var sizeButtonsHtml = availableSizes.map(function(s, index) {
+                        return '<button type="button" class="size-btn ' + (index === 0 ? 'selected' : '') + '" onclick="window.selectSize(this, \'' + s + '\', event)">' + s + '</button>';
+                    }).join('');
+                    sizeWrapper.innerHTML = '<div class="size-label">Хэмжээ сонгох:</div><div class="size-buttons-group">' + sizeButtonsHtml + '</div>';
+                } else {
+                    sizeWrapper.innerHTML = '<div class="size-label" style="color:#ef4444;">Хэмжээ дууссан</div>';
+                }
 
                 var btnGroup = document.createElement("div");
                 btnGroup.className = "btn-group";
@@ -966,24 +984,30 @@
             var prodName = prod.name || 'Нэргүй бараа';
             var numericPrice = parseInt(prod.price) || 0;
             var description = prod.description || prod.desc || "Энэхүү бүтээгдэхүүнд одоогоор нэмэлт тайлбар оруулаагүй байна.";
-            var isOutOfStock = prod.status === 'out_of_stock' || (prod.stock !== undefined && parseInt(prod.stock) <= 0);
+            
+            var modalSizes = getParsedSizes(prod);
+            var isOutOfStock = prod.status === 'out_of_stock' || (prod.stock !== undefined && parseInt(prod.stock) <= 0) || modalSizes.length === 0;
 
             var imagesArray = (Array.isArray(prod.images) && prod.images.length > 0) ? prod.images : [prod.image || 'https://via.placeholder.com/300'];
             var imgUrl = imagesArray[0];
 
             var detailSizeGroup = document.getElementById("detailSizeButtons");
             detailSizeGroup.innerHTML = "";
-            var modalSizes = getParsedSizes(prod);
-            selectedDetailSize = modalSizes[0];
-
-            modalSizes.forEach(function(s, idx) {
-                var btn = document.createElement("button");
-                btn.type = "button";
-                btn.className = "size-btn" + (idx === 0 ? " selected" : "");
-                btn.innerText = s;
-                btn.onclick = function() { window.selectModalSize(this, s); };
-                detailSizeGroup.appendChild(btn);
-            });
+            
+            if (modalSizes.length > 0) {
+                selectedDetailSize = modalSizes[0];
+                modalSizes.forEach(function(s, idx) {
+                    var btn = document.createElement("button");
+                    btn.type = "button";
+                    btn.className = "size-btn" + (idx === 0 ? " selected" : "");
+                    btn.innerText = s;
+                    btn.onclick = function() { window.selectModalSize(this, s); };
+                    detailSizeGroup.appendChild(btn);
+                });
+            } else {
+                selectedDetailSize = "";
+                detailSizeGroup.innerHTML = "<span style='font-size:11px; color:#ef4444;'>Боломжит хэмжээ байхгүй</span>";
+            }
 
             document.getElementById("detailImg").src = imgUrl;
             document.getElementById("detailImg").onclick = function() {
@@ -1064,8 +1088,8 @@
         window.openModal = function(prodId, name, price, chosenSize, event) {
             if (event) event.stopPropagation();
             currentActiveProdId = prodId;
-            chosenSize = chosenSize || 'M';
-            currentActiveProdName = name + " (Хэмжээ: " + chosenSize + ")";
+            currentActiveProdSize = chosenSize || 'M'; // Сонгосон хэмжээг тодорхой хадгалах
+            currentActiveProdName = name + " (Хэмжээ: " + currentActiveProdSize + ")";
             currentActiveProdPrice = parseInt(price) || 0;
             
             document.getElementById("modalProductTitle").innerText = currentActiveProdName;
@@ -1121,11 +1145,21 @@
             .then(data => {
                 if(data.ok) {
                     database.ref('products/' + currentActiveProdId + '/orders').transaction(function(o) { return (o || 0) + 1; });
+                    
+                    // ЗАСАВСАН ХЭСЭГ: Тухайн сонгосон sizeStocks болон ерөнхий stock-оос -1 хасна
                     database.ref('products/' + currentActiveProdId).transaction(function(product) {
                         if (product) {
+                            // 1. Сонгосон хэмжээнээс (sizeStocks) хасах
+                            if (product.sizeStocks && product.sizeStocks[currentActiveProdSize] !== undefined) {
+                                var sizeCount = parseInt(product.sizeStocks[currentActiveProdSize]);
+                                product.sizeStocks[currentActiveProdSize] = Math.max(0, sizeCount - 1);
+                            }
+
+                            // 2. Ерөнхий stock-оос хасах
                             var currentStock = (product.stock !== undefined && product.stock !== null) ? parseInt(product.stock) : 14;
                             var newStock = Math.max(0, currentStock - 1);
                             product.stock = newStock;
+                            
                             if (newStock === 0) product.status = 'out_of_stock';
                         }
                         return product;
@@ -1133,7 +1167,7 @@
 
                     database.ref('orders').push({ 
                         email: emailInput, phone: phoneInput, productName: currentActiveProdName, 
-                        address: fullAddress, orderCode: orderCode, timestamp: Date.now() 
+                        size: currentActiveProdSize, address: fullAddress, orderCode: orderCode, timestamp: Date.now() 
                     });
                     alert("Захиалга амжилттай бүртгэгдлээ! 👍");
                     window.closeModal();
