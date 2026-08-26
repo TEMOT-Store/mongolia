@@ -90,35 +90,73 @@
         .form-group textarea { resize: vertical; min-height: 80px; }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #3b82f6; }
 
-        /* Sizes & Stocks Талбар */
-        .size-stock-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+        /* Color Checkboxes List */
+        .color-checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
             gap: 10px;
-            margin-top: 6px;
+            margin-bottom: 12px;
         }
-        .size-stock-card {
+        .color-check-item {
             background: #0b1329;
             border: 1px solid #2a3c6e;
-            padding: 8px;
-            border-radius: 10px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+        .color-check-item input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+
+        /* Color & Size Variant Section */
+        .color-variant-block {
+            background: #0b1329;
+            border: 1px solid #2a3c6e;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+        .color-variant-header {
+            font-size: 13px;
+            font-weight: bold;
+            color: #38bdf8;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .size-stock-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+            gap: 8px;
+        }
+        .size-stock-card {
+            background: #131e3a;
+            border: 1px solid #1e2d54;
+            padding: 6px;
+            border-radius: 8px;
             text-align: center;
         }
         .size-stock-card span {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: bold;
             color: #60a5fa;
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
         .size-stock-card input {
             width: 100%;
-            padding: 6px;
+            padding: 4px;
             text-align: center;
-            font-size: 13px;
-            border-radius: 6px;
-            border: 1px solid #1e2d54;
-            background: #131e3a;
+            font-size: 12px;
+            border-radius: 4px;
+            border: 1px solid #2a3c6e;
+            background: #0b1329;
             color: #fff;
         }
 
@@ -171,6 +209,7 @@
         .stat-orders { background-color: #0b1329; border: 1px solid #2a3c6e; color: #60a5fa; }
         .stat-category { background-color: #0b1329; border: 1px solid #2a3c6e; color: #f59e0b; }
         .stat-sizes { background-color: #0b1329; border: 1px solid #2a3c6e; color: #a855f7; }
+        .stat-colors { background-color: #0b1329; border: 1px solid #2a3c6e; color: #ec4899; }
         .stat-status-in { background-color: rgba(16, 185, 129, 0.15); color: #10b981; }
         .stat-status-out { background-color: rgba(239, 68, 68, 0.15); color: #ef4444; }
         .stat-stock { background-color: #0b1329; border: 1px solid #2a3c6e; color: #10b981; }
@@ -217,6 +256,8 @@
             border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; margin-top: 10px;
         }
         .btn-save-edit:hover { background: #1d4ed8; }
+
+        .dot-icon { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
     </style>
 </head>
 <body>
@@ -271,15 +312,23 @@
             </div>
 
             <div class="form-group">
-                <label>Хэмжээ тус бүрийн үлдэгдэл тоо (0 бол байхгүй гэж үзнэ)</label>
-                <div class="size-stock-grid" id="addSizeStockGroup">
-                    <div class="size-stock-card"><span>XS</span><input type="number" data-size="XS" min="0" value="0"></div>
-                    <div class="size-stock-card"><span>S</span><input type="number" data-size="S" min="0" value="0"></div>
-                    <div class="size-stock-card"><span>M</span><input type="number" data-size="M" min="0" value="0"></div>
-                    <div class="size-stock-card"><span>L</span><input type="number" data-size="L" min="0" value="0"></div>
-                    <div class="size-stock-card"><span>XL</span><input type="number" data-size="XL" min="0" value="0"></div>
-                    <div class="size-stock-card"><span>XXL</span><input type="number" data-size="XXL" min="0" value="0"></div>
-                    <div class="size-stock-card"><span>3XL</span><input type="number" data-size="XXXL" min="0" value="0"></div>
+                <label>Байгаа өнгөнүүдийг сонгоно уу</label>
+                <div class="color-checkbox-group" id="addColorCheckboxes">
+                    <label class="color-check-item"><input type="checkbox" value="Хар" onchange="renderVariantInputs('add')"><span class="dot-icon" style="background:#000;"></span> Хар</label>
+                    <label class="color-check-item"><input type="checkbox" value="Цагаан" onchange="renderVariantInputs('add')"><span class="dot-icon" style="background:#fff;"></span> Цагаан</label>
+                    <label class="color-check-item"><input type="checkbox" value="Улаан" onchange="renderVariantInputs('add')"><span class="dot-icon" style="background:#ef4444;"></span> Улаан</label>
+                    <label class="color-check-item"><input type="checkbox" value="Хөх" onchange="renderVariantInputs('add')"><span class="dot-icon" style="background:#3b82f6;"></span> Хөх</label>
+                    <label class="color-check-item"><input type="checkbox" value="Ногоон" onchange="renderVariantInputs('add')"><span class="dot-icon" style="background:#22c55e;"></span> Ногоон</label>
+                    <label class="color-check-item"><input type="checkbox" value="Шар" onchange="renderVariantInputs('add')"><span class="dot-icon" style="background:#eab308;"></span> Шар</label>
+                    <label class="color-check-item"><input type="checkbox" value="Саарал" onchange="renderVariantInputs('add')"><span class="dot-icon" style="background:#6b7280;"></span> Саарал</label>
+                    <label class="color-check-item"><input type="checkbox" value="Ягаан" onchange="renderVariantInputs('add')"><span class="dot-icon" style="background:#ec4899;"></span> Ягаан</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Өнгө тус бүрийн хэмжээ ба үлдэгдэл тоо</label>
+                <div id="addVariantsContainer">
+                    <p style="font-size: 12px; color: #94a3b8;">Дээрхээс өнгө сонгоно уу...</p>
                 </div>
             </div>
 
@@ -341,15 +390,23 @@
             </div>
 
             <div class="form-group">
-                <label>Хэмжээ тус бүрийн үлдэгдэл тоо</label>
-                <div class="size-stock-grid" id="editSizeStockGroup">
-                    <div class="size-stock-card"><span>XS</span><input type="number" data-size="XS" min="0" value="0"></div>
-                    <div class="size-stock-card"><span>S</span><input type="number" data-size="S" min="0" value="0"></div>
-                    <div class="size-stock-card"><span>M</span><input type="number" data-size="M" min="0" value="0"></div>
-                    <div class="size-stock-card"><span>L</span><input type="number" data-size="L" min="0" value="0"></div>
-                    <div class="size-stock-card"><span>XL</span><input type="number" data-size="XL" min="0" value="0"></div>
-                    <div class="size-stock-card"><span>XXL</span><input type="number" data-size="XXL" min="0" value="0"></div>
-                    <div class="size-stock-card"><span>3XL</span><input type="number" data-size="XXXL" min="0" value="0"></div>
+                <label>Байгаа өнгөнүүдийг сонгоно уу</label>
+                <div class="color-checkbox-group" id="editColorCheckboxes">
+                    <label class="color-check-item"><input type="checkbox" value="Хар" onchange="renderVariantInputs('edit')"><span class="dot-icon" style="background:#000;"></span> Хар</label>
+                    <label class="color-check-item"><input type="checkbox" value="Цагаан" onchange="renderVariantInputs('edit')"><span class="dot-icon" style="background:#fff;"></span> Цагаан</label>
+                    <label class="color-check-item"><input type="checkbox" value="Улаан" onchange="renderVariantInputs('edit')"><span class="dot-icon" style="background:#ef4444;"></span> Улаан</label>
+                    <label class="color-check-item"><input type="checkbox" value="Хөх" onchange="renderVariantInputs('edit')"><span class="dot-icon" style="background:#3b82f6;"></span> Хөх</label>
+                    <label class="color-check-item"><input type="checkbox" value="Ногоон" onchange="renderVariantInputs('edit')"><span class="dot-icon" style="background:#22c55e;"></span> Ногоон</label>
+                    <label class="color-check-item"><input type="checkbox" value="Шар" onchange="renderVariantInputs('edit')"><span class="dot-icon" style="background:#eab308;"></span> Шар</label>
+                    <label class="color-check-item"><input type="checkbox" value="Саарал" onchange="renderVariantInputs('edit')"><span class="dot-icon" style="background:#6b7280;"></span> Саарал</label>
+                    <label class="color-check-item"><input type="checkbox" value="Ягаан" onchange="renderVariantInputs('edit')"><span class="dot-icon" style="background:#ec4899;"></span> Ягаан</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Өнгө тус бүрийн хэмжээ ба үлдэгдэл тоо</label>
+                <div id="editVariantsContainer">
+                    <p style="font-size: 12px; color: #94a3b8;">Дээрхээс өнгө сонгоно уу...</p>
                 </div>
             </div>
 
@@ -393,6 +450,7 @@
 
         let selectedBase64Images = [];
         let allProductsCache = {};
+        const AVAILABLE_SIZES = ["XS", "S", "M", "L", "XL", "XXL", "3XL"];
 
         window.addEventListener('DOMContentLoaded', () => {
             if(localStorage.getItem("admin_authenticated") === "true") { 
@@ -479,41 +537,91 @@
             renderThumbnails();
         };
 
-        function getSizeStocksData(groupId) {
-            var inputs = document.querySelectorAll('#' + groupId + ' input[data-size]');
+        // Dynamically Render Variant Inputs for selected Colors
+        window.renderVariantInputs = function(type, existingVariants = {}) {
+            var checkboxGroupId = type === 'add' ? 'addColorCheckboxes' : 'editColorCheckboxes';
+            var containerId = type === 'add' ? 'addVariantsContainer' : 'editVariantsContainer';
+            
+            var checkboxes = document.querySelectorAll('#' + checkboxGroupId + ' input[type="checkbox"]:checked');
+            var container = document.getElementById(containerId);
+            container.innerHTML = "";
+
+            if (checkboxes.length === 0) {
+                container.innerHTML = '<p style="font-size: 12px; color: #94a3b8;">Дээрхээс өнгө сонгоно уу...</p>';
+                return;
+            }
+
+            checkboxes.forEach(function(cb) {
+                var color = cb.value;
+                var colorBlock = document.createElement("div");
+                colorBlock.className = "color-variant-block";
+                colorBlock.setAttribute("data-color-name", color);
+
+                var sizesHTML = "";
+                AVAILABLE_SIZES.forEach(function(sz) {
+                    var val = (existingVariants[color] && existingVariants[color][sz] !== undefined) ? existingVariants[color][sz] : 0;
+                    sizesHTML += `
+                        <div class="size-stock-card">
+                            <span>${sz}</span>
+                            <input type="number" data-size-key="${sz}" min="0" value="${val}">
+                        </div>
+                    `;
+                });
+
+                colorBlock.innerHTML = `
+                    <div class="color-variant-header">🎨 Өнгө: <b>${color}</b></div>
+                    <div class="size-stock-grid">${sizesHTML}</div>
+                `;
+                container.appendChild(colorBlock);
+            });
+        };
+
+        // Extract Variants Data (Color -> Size -> Stock)
+        function getVariantsData(containerId) {
+            var container = document.getElementById(containerId);
+            var blocks = container.querySelectorAll('.color-variant-block');
+            
+            var variants = {};
+            var colorsSet = new Set();
+            var sizesSet = new Set();
+            var colorStocks = {};
             var sizeStocks = {};
-            var availableSizes = [];
             var totalStock = 0;
 
-            inputs.forEach(function(input) {
-                var size = input.getAttribute('data-size');
-                var count = parseInt(input.value) || 0;
-                sizeStocks[size] = count;
-                if (count > 0) {
-                    availableSizes.push(size);
-                    totalStock += count;
+            blocks.forEach(function(block) {
+                var color = block.getAttribute("data-color-name");
+                variants[color] = {};
+                var colorTotal = 0;
+
+                var inputs = block.querySelectorAll('input[data-size-key]');
+                inputs.forEach(function(input) {
+                    var sz = input.getAttribute("data-size-key");
+                    var qty = parseInt(input.value) || 0;
+                    
+                    if (qty > 0) {
+                        variants[color][sz] = qty;
+                        colorsSet.add(color);
+                        sizesSet.add(sz);
+                        
+                        colorTotal += qty;
+                        sizeStocks[sz] = (sizeStocks[sz] || 0) + qty;
+                        totalStock += qty;
+                    }
+                });
+
+                if (colorTotal > 0) {
+                    colorStocks[color] = colorTotal;
                 }
             });
 
             return {
+                variants: variants,
+                colors: Array.from(colorsSet),
+                sizes: Array.from(sizesSet),
+                colorStocks: colorStocks,
                 sizeStocks: sizeStocks,
-                sizes: availableSizes,
                 totalStock: totalStock
             };
-        }
-
-        function setSizeStocksData(groupId, sizeStocks, sizesArray) {
-            var inputs = document.querySelectorAll('#' + groupId + ' input[data-size]');
-            inputs.forEach(function(input) {
-                var size = input.getAttribute('data-size');
-                if (sizeStocks && sizeStocks[size] !== undefined) {
-                    input.value = sizeStocks[size];
-                } else if (sizesArray && sizesArray.includes(size)) {
-                    input.value = 1;
-                } else {
-                    input.value = 0;
-                }
-            });
         }
 
         function loadProducts() {
@@ -533,15 +641,18 @@
                     var mainImg = (prod.images && prod.images.length > 0) ? prod.images[0] : 'https://via.placeholder.com/65';
                     
                     var totalStock = 0;
-                    var sizeDetailsStr = "";
+                    var variantDetailsStr = "";
 
-                    if (prod.sizeStocks) {
-                        Object.keys(prod.sizeStocks).forEach(sz => {
-                            var qty = prod.sizeStocks[sz];
-                            if (qty > 0) {
-                                totalStock += qty;
-                                sizeDetailsStr += `${sz}:${qty}ш `;
-                            }
+                    // Calculate total stock from variants or fallback
+                    if (prod.variants) {
+                        Object.keys(prod.variants).forEach(c => {
+                            Object.keys(prod.variants[c]).forEach(sz => {
+                                var qty = prod.variants[c][sz];
+                                if (qty > 0) {
+                                    totalStock += qty;
+                                    variantDetailsStr += `[${c}-${sz}:${qty}ш] `;
+                                }
+                            });
                         });
                     } else if (prod.stock !== undefined) {
                         totalStock = prod.stock;
@@ -552,7 +663,8 @@
                         ? '<span class="stat-badge stat-status-out">❌ Дууссан</span>' 
                         : '<span class="stat-badge stat-status-in">✅ Бэлэн</span>';
 
-                    var sizesText = sizeDetailsStr.trim() || ((prod.sizes && prod.sizes.length > 0) ? prod.sizes.join(', ') : 'Байхгүй');
+                    var colorsText = (prod.colors && prod.colors.length > 0) ? prod.colors.join(', ') : 'Сонгоогүй';
+                    var sizesText = (prod.sizes && prod.sizes.length > 0) ? prod.sizes.join(', ') : 'Сонгоогүй';
 
                     var row = document.createElement("div");
                     row.className = "admin-prod-card";
@@ -565,8 +677,9 @@
                             '<div class="stats-container">' +
                                 statusBadge +
                                 '<span class="stat-badge stat-category">🏷️ ' + (prod.category || 'Спорт хувцас') + '</span>' +
+                                '<span class="stat-badge stat-colors">🎨 ' + colorsText + '</span>' +
                                 '<span class="stat-badge stat-sizes">📏 ' + sizesText + '</span>' +
-                                '<span class="stat-badge stat-stock">📦 Нийт: ' + totalStock + '</span>' +
+                                '<span class="stat-badge stat-stock">📦 Нийт үлдэгдэл: ' + totalStock + '</span>' +
                                 '<span class="stat-badge stat-views"><i class="fa-regular fa-eye"></i> ' + (prod.views || 0) + '</span>' +
                                 '<span class="stat-badge stat-orders"><i class="fa-solid fa-cart-shopping"></i> ' + (prod.orders || 0) + '</span>' +
                             '</div>' +
@@ -594,6 +707,7 @@
                     
                     var prodId = order.productId || '';
                     var size = order.selectedSize || order.size || '';
+                    var color = order.selectedColor || order.color || '';
 
                     var card = document.createElement("div");
                     card.className = "order-card";
@@ -602,11 +716,12 @@
                             '<div class="order-row"><b>📧 Gmail:</b> ' + (order.email || 'Байхгүй') + '</div>' +
                             '<div class="order-row"><b>📞 Утас:</b> ' + (order.phone || 'Байхгүй') + '</div>' +
                             '<div class="order-row"><b>📦 Бараа:</b> ' + (order.items || order.productName || 'Мэдээлэлгүй') + '</div>' +
+                            '<div class="order-row"><b>🎨 Сонгосон өнгө:</b> ' + (color || 'Сонгоогүй') + '</div>' +
                             '<div class="order-row"><b>📏 Сонгосон хэмжээ:</b> ' + (size || 'Сонгоогүй') + '</div>' +
                             '<div class="order-row"><b>📍 Хаяг:</b> ' + (order.address || 'Байхгүй') + '</div>' +
                             '<div class="order-row" style="margin-top:6px;"><b>Гүйлгээний утга:</b> <span class="order-code-badge">' + (order.orderCode || 'Байхгүй') + '</span></div>' +
                         '</div>' +
-                        '<button class="btn-complete" onclick="window.completeOrder(\'' + orderId + '\', \'' + prodId + '\', \'' + size + '\')">✅ Хүргэгдсэн (Хаах)</button>';
+                        '<button class="btn-complete" onclick="window.completeOrder(\'' + orderId + '\', \'' + prodId + '\', \'' + size + '\', \'' + color + '\')">✅ Хүргэгдсэн (Хаах)</button>';
                     orderDiv.appendChild(card);
                 });
             });
@@ -620,7 +735,7 @@
             var status = document.getElementById("prodStatus").value;
             var btn = document.getElementById("btnAddProduct");
 
-            var stockData = getSizeStocksData('addSizeStockGroup');
+            var variantData = getVariantsData('addVariantsContainer');
 
             if (selectedBase64Images.length === 0) { alert("Барааны зургийг оруулна уу!"); return; }
             if (!name || !price) { alert("Нэр болон үнийг оруулна уу!"); return; }
@@ -632,12 +747,15 @@
                 images: selectedBase64Images,
                 name: name,
                 category: category,
-                sizes: stockData.sizes,
-                sizeStocks: stockData.sizeStocks,
+                variants: variantData.variants,
+                colors: variantData.colors,
+                colorStocks: variantData.colorStocks,
+                sizes: variantData.sizes,
+                sizeStocks: variantData.sizeStocks,
                 price: numericPrice,
-                stock: stockData.totalStock,
+                stock: variantData.totalStock,
                 description: description,
-                status: stockData.totalStock === 0 ? 'out_of_stock' : status,
+                status: variantData.totalStock === 0 ? 'out_of_stock' : status,
                 views: 0,
                 orders: 0
             }).then(function() {
@@ -649,7 +767,10 @@
                 document.getElementById("prodPrice").value = "";
                 document.getElementById("prodDesc").value = "";
                 document.getElementById("prodStatus").value = "in_stock";
-                setSizeStocksData('addSizeStockGroup', {}, []);
+                
+                // Clear checkboxes
+                document.querySelectorAll('#addColorCheckboxes input[type="checkbox"]').forEach(c => c.checked = false);
+                document.getElementById('addVariantsContainer').innerHTML = '<p style="font-size: 12px; color: #94a3b8;">Дээрхээс өнгө сонгоно уу...</p>';
 
                 selectedBase64Images = [];
             }).finally(function() {
@@ -668,7 +789,13 @@
             document.getElementById("editProdDesc").value = prod.description || "";
             document.getElementById("editProdStatus").value = prod.status || "in_stock";
 
-            setSizeStocksData('editSizeStockGroup', prod.sizeStocks, prod.sizes);
+            // Check checkboxes based on product colors
+            var checkboxes = document.querySelectorAll('#editColorCheckboxes input[type="checkbox"]');
+            checkboxes.forEach(function(cb) {
+                cb.checked = (prod.colors && prod.colors.includes(cb.value)) || (prod.variants && prod.variants[cb.value] !== undefined);
+            });
+
+            renderVariantInputs('edit', prod.variants || {});
 
             document.getElementById("editModal").style.display = "flex";
         };
@@ -685,7 +812,7 @@
             var description = document.getElementById("editProdDesc").value.trim();
             var status = document.getElementById("editProdStatus").value;
             
-            var stockData = getSizeStocksData('editSizeStockGroup');
+            var variantData = getVariantsData('editVariantsContainer');
 
             if(!name || !price) {
                 alert("Нэр болон үнийг заавал бичнэ үү!");
@@ -697,12 +824,15 @@
             database.ref('products/' + prodId).update({
                 name: name,
                 category: category,
-                sizes: stockData.sizes,
-                sizeStocks: stockData.sizeStocks,
+                variants: variantData.variants,
+                colors: variantData.colors,
+                colorStocks: variantData.colorStocks,
+                sizes: variantData.sizes,
+                sizeStocks: variantData.sizeStocks,
                 price: numericPrice,
-                stock: stockData.totalStock,
+                stock: variantData.totalStock,
                 description: description,
-                status: stockData.totalStock === 0 ? 'out_of_stock' : status
+                status: variantData.totalStock === 0 ? 'out_of_stock' : status
             }).then(() => {
                 alert("Барааны мэдээлэл амжилттай шинэчлэгдлээ! ✨");
                 window.closeEditModal();
@@ -717,7 +847,7 @@
             }
         };
 
-        window.completeOrder = function(orderId, productId, selectedSize) {
+        window.completeOrder = function(orderId, productId, selectedSize, selectedColor) {
             if (!productId || productId === 'null' || productId === 'undefined') {
                 alert("⚠️ Анхаар: Захиалга дээр productId байхгүй тул үлдэгдэл хасах боломжгүй! Шууд хаалаа.");
                 database.ref('orders/' + orderId).remove();
@@ -725,44 +855,71 @@
             }
 
             if (confirm("Энэ захиалгыг хүргэгдсэн гэж хааж, үлдэгдлийг хасах уу?")) {
-                var cleanSize = selectedSize ? selectedSize.toString().trim().toUpperCase() : '';
+                var cleanSize = selectedSize ? selectedSize.toString().trim() : '';
+                var cleanColor = selectedColor ? selectedColor.toString().trim() : '';
 
                 database.ref('products/' + productId).transaction(function(product) {
                     if (product) {
-                        if (cleanSize && product.sizeStocks && product.sizeStocks[cleanSize] > 0) {
-                            product.sizeStocks[cleanSize] -= 1;
+                        // 1. Өнгө + Хэмжээ хосолсон үлдэгдэл (variants) хасах
+                        if (product.variants && cleanColor && cleanSize) {
+                            var colorKey = Object.keys(product.variants).find(k => k.trim().toLowerCase() === cleanColor.toLowerCase());
+                            if (colorKey && product.variants[colorKey]) {
+                                var sizeKey = Object.keys(product.variants[colorKey]).find(k => k.trim().toLowerCase() === cleanSize.toLowerCase());
+                                if (sizeKey && Number(product.variants[colorKey][sizeKey]) > 0) {
+                                    product.variants[colorKey][sizeKey] = Number(product.variants[colorKey][sizeKey]) - 1;
+                                    if (product.variants[colorKey][sizeKey] === 0) {
+                                        delete product.variants[colorKey][sizeKey];
+                                    }
+                                }
+                                if (Object.keys(product.variants[colorKey]).length === 0) {
+                                    delete product.variants[colorKey];
+                                }
+                            }
                         }
 
+                        // 2. Нийт үлдэгдэл, идэвхтэй Өнгө болон Хэмжээнүүдийг шинэчлэн тооцоолох
                         var totalStock = 0;
-                        var activeSizes = [];
+                        var activeColors = new Set();
+                        var activeSizes = new Set();
+                        var newColorStocks = {};
+                        var newSizeStocks = {};
 
-                        if (product.sizeStocks) {
-                            Object.keys(product.sizeStocks).forEach(function(s) {
-                                var qty = product.sizeStocks[s] || 0;
-                                if (qty > 0) {
-                                    totalStock += qty;
-                                    activeSizes.push(s);
-                                }
+                        if (product.variants) {
+                            Object.keys(product.variants).forEach(function(c) {
+                                Object.keys(product.variants[c]).forEach(function(s) {
+                                    var qty = Number(product.variants[c][s]) || 0;
+                                    if (qty > 0) {
+                                        totalStock += qty;
+                                        activeColors.add(c);
+                                        activeSizes.add(s);
+                                        newColorStocks[c] = (newColorStocks[c] || 0) + qty;
+                                        newSizeStocks[s] = (newSizeStocks[s] || 0) + qty;
+                                    }
+                                });
                             });
                             product.stock = totalStock;
-                            product.sizes = activeSizes;
+                            product.colors = Array.from(activeColors);
+                            product.sizes = Array.from(activeSizes);
+                            product.colorStocks = newColorStocks;
+                            product.sizeStocks = newSizeStocks;
                         } else if (product.stock > 0) {
-                            product.stock -= 1;
+                            product.stock = Number(product.stock) - 1;
                         }
 
+                        // 3. Бүх үлдэгдэл 0 болсон үед "Дууссан" төлөвт оруулна
                         if (product.stock <= 0) {
                             product.status = 'out_of_stock';
                         }
 
-                        product.orders = (product.orders || 0) + 1;
+                        product.orders = (Number(product.orders) || 0) + 1;
                     }
                     return product;
-                }, function(error, committed, snapshot) {
+                }, function(error, committed) {
                     if (error) {
                         alert("❌ Алдаа гарлаа: " + error.message);
                     } else if (committed) {
                         database.ref('orders/' + orderId).remove().then(function() {
-                            alert("✅ Захиалга амжилттай хаагдаж, үлдэгдэл хасагдлаа!");
+                            alert("✅ Захиалга амжилттай хаагдаж, тухайн өнгө ба хэмжээний үлдэгдлээс хасагдлаа!");
                         });
                     }
                 });

@@ -63,7 +63,7 @@
             font-weight: 700; 
             color: #f8fafc; 
             text-transform: capitalize; 
-            margin-bottom: 2px; 
+            margin-bottom: 6px; 
             display: -webkit-box; 
             -webkit-line-clamp: 2; 
             line-clamp: 2;
@@ -71,16 +71,33 @@
             overflow: hidden; 
         }
 
-        .item-size {
-            font-size: 11px;
-            color: #38bdf8;
-            font-weight: 700;
+        /* Edit боломжтой сонголтуудын стиль */
+        .item-options {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+        }
+
+        .edit-select {
             background: #0f172a;
-            border: 1px solid #1e293b;
-            padding: 2px 8px;
+            color: #38bdf8;
+            border: 1px solid #334155;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 6px;
             border-radius: 6px;
-            display: inline-block;
-            margin-bottom: 4px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .edit-select option {
+            background: #1e293b;
+            color: #f8fafc;
+        }
+
+        .edit-select option:disabled {
+            color: #64748b;
         }
 
         .item-price { font-size: 15px; font-weight: 800; color: #38bdf8; }
@@ -264,7 +281,7 @@
                 </div>
                 <div class="bank-info-row">
                     <span class="bank-info-label" style="color:#f43f5e; font-weight:bold;">Гүйлгээний утга:</span>
-                 <span class="bank-info-value" id="modalOrderCode" style="color:#ef4444; font-weight: 800;">---</span>
+                    <span class="bank-info-value" id="modalOrderCode" style="color:#f43f5e; font-weight: 800;">---</span>
                 </div>
             </div>
 
@@ -352,7 +369,8 @@
         let calculatedSubtotal = 0; 
 
         window.onload = function() {
-            database.ref('products').once('value', function(snapshot) {
+            // Firebase-с мэдээллээ байнга realtime шууд сонсож шинэчилнэ
+            database.ref('products').on('value', function(snapshot) {
                 firebaseProductsCache = [];
                 if(snapshot.exists()) {
                     snapshot.forEach(function(childSnapshot) {
@@ -389,12 +407,59 @@
                 let imagesList = [mainImg];
 
                 let foundProd = firebaseProductsCache.find(p => p.name && p.name.toLowerCase().trim() === item.name.toLowerCase().trim());
-                if (foundProd && foundProd.images && foundProd.images.length > 0) {
-                    imagesList = foundProd.images;
+                
+                // Боломжит өнгө, хэмжээ болон үлдэгдлийн мэдээлэл боловсруулах
+                let availableSizes = ['S', 'M', 'L', 'XL', '2XL'];
+                let availableColors = ['Үндсэн'];
+                let outOfStockColors = [];
+                let outOfStockSizes = [];
+
+                if (foundProd) {
+                    if (foundProd.images && foundProd.images.length > 0) {
+                        imagesList = foundProd.images;
+                    }
+
+                    if (foundProd.sizes && Array.isArray(foundProd.sizes)) {
+                        availableSizes = foundProd.sizes;
+                    }
+
+                    if (foundProd.colors && Array.isArray(foundProd.colors)) {
+                        availableColors = foundProd.colors;
+                    }
+
+                    // Хэрэв Firebase дээр тодорхой өнгө/хэмжээний үлдэгдэл бүртгэлтэй бол
+                    if (foundProd.outOfStockColors && Array.isArray(foundProd.outOfStockColors)) {
+                        outOfStockColors = foundProd.outOfStockColors;
+                    }
+
+                    if (foundProd.outOfStockSizes && Array.isArray(foundProd.outOfStockSizes)) {
+                        outOfStockSizes = foundProd.outOfStockSizes;
+                    }
+
+                    // Бараа нийтдээ дууссан бол
+                    if (Number(foundProd.stock) <= 0) {
+                        outOfStockColors = availableColors;
+                        outOfStockSizes = availableSizes;
+                    }
                 }
 
                 let encodedImages = encodeURIComponent(JSON.stringify(imagesList));
-                let itemSize = item.size || 'M';
+                let itemSize = item.size || availableSizes[0] || 'M';
+                let itemColor = item.color || availableColors[0] || 'Үндсэн';
+
+                // Сонголтууд үүсгэх HTML (Size Dropdown)
+                let sizeOptionsHTML = availableSizes.map(sz => {
+                    let isDisabled = outOfStockSizes.includes(sz);
+                    let selected = sz === itemSize ? 'selected' : '';
+                    return `<option value="${sz}" ${selected} ${isDisabled ? 'disabled' : ''}>Хэмжээ: ${sz} ${isDisabled ? '(Дууссан)' : ''}</option>`;
+                }).join('');
+
+                // Сонголтууд үүсгэх HTML (Color Dropdown)
+                let colorOptionsHTML = availableColors.map(cl => {
+                    let isDisabled = outOfStockColors.includes(cl);
+                    let selected = cl === itemColor ? 'selected' : '';
+                    return `<option value="${cl}" ${selected} ${isDisabled ? 'disabled' : ''}>Өнгө: ${cl} ${isDisabled ? '(Дууссан)' : ''}</option>`;
+                }).join('');
 
                 const card = document.createElement("div");
                 card.className = "cart-item";
@@ -402,7 +467,10 @@
                     '<img src="' + mainImg + '" alt="' + item.name + '" onclick="window.openCartImagePreview(\'' + encodedImages + '\', \'' + item.name.replace(/'/g, "\\'") + '\')">' +
                     '<div class="item-details">' +
                         '<h3 class="item-name">' + item.name + '</h3>' +
-                        '<span class="item-size">Хэмжээ: ' + itemSize + '</span>' +
+                        '<div class="item-options">' +
+                            '<select class="edit-select" onchange="window.updateItemOption(' + index + ', \'size\', this.value)">' + sizeOptionsHTML + '</select>' +
+                            '<select class="edit-select" onchange="window.updateItemOption(' + index + ', \'color\', this.value)">' + colorOptionsHTML + '</select>' +
+                        '</div>' +
                         '<p class="item-price">' + itemTotal.toLocaleString() + '₮</p>' +
                         '<div class="quantity-controls">' +
                             '<button class="btn-qty" onclick="window.changeQuantity(' + index + ', -1)">-</button>' +
@@ -417,6 +485,15 @@
 
             document.getElementById("summarySubtotal").innerText = calculatedSubtotal.toLocaleString() + "₮";
             document.getElementById("summaryGrandTotal").innerText = calculatedSubtotal.toLocaleString() + "₮";
+        };
+
+        // Өнгө, хэмжээг сагсан дотроос шууд EDIT хийж шинэчлэх функц
+        window.updateItemOption = function(index, type, value) {
+            if (cart[index]) {
+                cart[index][type] = value;
+                window.saveCart();
+                window.renderCart();
+            }
         };
 
         window.saveCart = function() {
@@ -518,7 +595,8 @@
             var totalAmount = calculatedSubtotal.toLocaleString() + "₮";
             var fullAddress = district + ", " + khoroo + ", " + building + ", " + door;
 
-            let itemsText = cart.map(item => item.name + " [" + (item.size || 'M') + "] (" + item.quantity + "ш)").join(", ");
+            // Сонгосон Хэмжээ болон Өнгийг захиалгын мэдээлэлд оруулах
+            let itemsText = cart.map(item => item.name + " [" + (item.size || 'M') + " / " + (item.color || 'Үндсэн') + "] (" + item.quantity + "ш)").join(", ");
 
             var textMessage = "🔔 САГСНЫ ШИНЭ ЗАХИАЛГА!\n\n📧 Gmail: " + emailInput + "\n📞 Утас: " + phoneInput + "\n📦 Бараанууд: " + itemsText + "\n📍 Хаяг: " + fullAddress + "\n💰 Нийт дүн (Хүргэлт үнэгүй): " + totalAmount + "\n🔢 Гүйлгээний утга: " + orderCode;
 
@@ -556,7 +634,20 @@
                                 if (pData.name && pData.name.toLowerCase().trim() === cartItem.name.toLowerCase().trim()) {
                                     var currentStock = Number(pData.stock || 0);
                                     var newStock = Math.max(0, currentStock - (cartItem.quantity || 1));
-                                    childSnapshot.ref.update({ stock: newStock });
+                                    
+                                    // Шинэчилж буй нэмэлт тохиргоо
+                                    let updates = { stock: newStock };
+                                    
+                                    // Хэрэв үлдэгдэл 0 болсон бол сонгосон өнгийг Дууссан жагсаалтад нэмэх
+                                    if (newStock === 0 && cartItem.color) {
+                                        let outColors = pData.outOfStockColors || [];
+                                        if (!outColors.includes(cartItem.color)) {
+                                            outColors.push(cartItem.color);
+                                        }
+                                        updates.outOfStockColors = outColors;
+                                    }
+
+                                    childSnapshot.ref.update(updates);
                                 }
                             });
                         });
