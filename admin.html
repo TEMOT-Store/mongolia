@@ -3,99 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>ASAR SPORT - АДМИН ПАНЕЛЬ</title>
+    <title>ASAR SPORT - LUXURY АДМИН ПАНЕЛЬ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        :root {
+            --bg-main: #070b19;
+            --card-bg: rgba(19, 30, 58, 0.75);
+            --card-border: rgba(212, 175, 55, 0.25);
+            --card-border-hover: rgba(212, 175, 55, 0.6);
+            --gold-accent: #d4af37;
+            --gold-gradient: linear-gradient(135deg, #f39c12, #d4af37);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --input-bg: #0b1329;
+            --input-border: #1e2d54;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            background-color: #0b1329 !important; 
-            color: #e2e8f0; 
-            padding: 20px 4% 50px 4%; 
+            background-color: var(--bg-main) !important; 
+            color: var(--text-main); 
+            padding: 24px 4% 60px 4%; 
             display: flex; 
             flex-direction: column; 
             align-items: center; 
             -webkit-tap-highlight-color: transparent;
         }
 
+        /* Luxury Glassmorphism Container Base */
+        .glass-box {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Login Overlay */
         .login-overlay { 
             position: fixed; 
             top: 0; left: 0; 
             width: 100%; height: 100%; 
-            background-color: #0b1329; 
+            background-color: var(--bg-main); 
             display: flex; justify-content: center; align-items: center; 
             z-index: 9999; 
         }
         .login-box { 
-            background: #131e3a; 
-            border: 1px solid #1e2d54; 
-            padding: 30px 24px; 
-            border-radius: 20px; 
             width: 90%; max-width: 380px; 
+            padding: 35px 28px; 
             text-align: center; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
-        .login-box h3 { margin-bottom: 15px; font-weight: 800; color: #ffffff; font-size: 18px; }
+        .login-box h3 { 
+            margin-bottom: 20px; font-weight: 800; font-size: 20px; 
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
         .login-box input { 
-            width: 100%; padding: 12px; 
-            border: 1px solid #2a3c6e; border-radius: 10px; 
-            margin-bottom: 15px; outline: none; font-size: 16px; 
-            text-align: center; background: #0b1329; color: #ffffff; 
+            width: 100%; padding: 14px; 
+            border: 1px solid var(--input-border); border-radius: 12px; 
+            margin-bottom: 18px; outline: none; font-size: 16px; 
+            text-align: center; background: var(--input-bg); color: #ffffff; 
         }
-        .login-box input:focus { border-color: #3b82f6; }
+        .login-box input:focus { border-color: var(--gold-accent); }
         .btn-login { 
-            background: #2563eb; color: white; border: none; 
-            padding: 12px; width: 100%; border-radius: 10px; 
-            font-size: 15px; font-weight: bold; cursor: pointer; transition: 0.2s;
+            background: var(--gold-gradient); color: #000; border: none; 
+            padding: 14px; width: 100%; border-radius: 12px; 
+            font-size: 15px; font-weight: 800; cursor: pointer; transition: 0.2s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
-        .btn-login:hover { background: #1d4ed8; }
+        .btn-login:hover { transform: translateY(-2px); opacity: 0.95; }
 
-        .admin-main-content { display: none; width: 100%; max-width: 650px; }
-        .header-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
-        .header-left { display: flex; align-items: center; gap: 12px; }
+        /* Main Admin Layout */
+        .admin-main-content { display: none; width: 100%; max-width: 680px; }
+        .header-bar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+        .header-left { display: flex; align-items: center; gap: 14px; }
         .btn-back { 
-            background: #131e3a; border: 1px solid #2a3c6e; 
-            width: 40px; height: 40px; border-radius: 12px; 
+            background: var(--card-bg); border: 1px solid var(--card-border); 
+            width: 42px; height: 42px; border-radius: 12px; 
             display: flex; align-items: center; justify-content: center; 
-            color: #ffffff; text-decoration: none; font-size: 16px; 
+            color: var(--gold-accent); text-decoration: none; font-size: 16px; 
         }
-        .btn-back:hover { background: #1e2d54; }
+        .btn-back:hover { border-color: var(--gold-accent); background: #131e3a; }
         .btn-logout {
-            background: rgba(239, 68, 68, 0.15); color: #ef4444; 
+            background: rgba(239, 68, 68, 0.1); color: #f87171; 
             border: 1px solid rgba(239, 68, 68, 0.3); 
-            padding: 8px 14px; border-radius: 10px; font-size: 12px; font-weight: bold; cursor: pointer; transition: 0.2s;
+            padding: 10px 16px; border-radius: 12px; font-size: 12px; font-weight: 700; cursor: pointer; transition: 0.2s;
         }
         .btn-logout:hover { background: #ef4444; color: white; }
-        h2 { font-size: 18px; font-weight: 800; color: #ffffff; }
+        h2 { 
+            font-size: 19px; font-weight: 800; 
+            background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            letter-spacing: 0.5px;
+        }
 
-        /* Илүү гоё болгосон Грид статистик хэсэг */
+        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 14px;
+            margin-bottom: 24px;
         }
         .site-visit-card {
-            background: #131e3a; border: 1px solid #1e2d54; 
-            border-radius: 20px; padding: 18px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            padding: 20px; text-align: center;
         }
-        .site-visit-title { font-size: 11px; color: #94a3b8; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
-        .site-visit-count { font-size: 26px; font-weight: 800; color: #60a5fa; margin-top: 4px; }
+        .site-visit-title { font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .site-visit-count { font-size: 26px; font-weight: 800; color: var(--gold-accent); margin-top: 6px; }
 
         .admin-box { 
-            background-color: #131e3a; border: 1px solid #1e2d54; 
-            padding: 20px; border-radius: 20px; width: 100%; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            padding: 24px; width: 100%; margin-bottom: 28px;
         }
 
-        .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; font-size: 11px; font-weight: 700; color: #60a5fa; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .form-group input, .form-group select, .form-group textarea { 
-            width: 100%; padding: 12px; border: 1px solid #2a3c6e; 
-            border-radius: 10px; font-size: 14px; background-color: #0b1329; color: #ffffff; outline: none; font-family: inherit;
+        .form-group { margin-bottom: 20px; }
+        .form-group label { 
+            display: block; font-size: 12px; font-weight: 700; color: var(--gold-accent); 
+            margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.8px; 
         }
-        .form-group textarea { resize: vertical; min-height: 80px; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #3b82f6; }
+        .form-group input, .form-group select, .form-group textarea { 
+            width: 100%; padding: 12px 14px; border: 1px solid var(--input-border); 
+            border-radius: 10px; font-size: 14px; background-color: var(--input-bg); color: #ffffff; outline: none; font-family: inherit;
+            transition: 0.2s;
+        }
+        .form-group textarea { resize: vertical; min-height: 85px; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold-accent); }
 
         /* Color Checkboxes List */
         .color-checkbox-group {
@@ -105,34 +140,35 @@
             margin-bottom: 12px;
         }
         .color-check-item {
-            background: #0b1329;
-            border: 1px solid #2a3c6e;
-            padding: 6px 12px;
-            border-radius: 8px;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
+            padding: 8px 14px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             gap: 8px;
             cursor: pointer;
             font-size: 13px;
+            transition: 0.2s;
         }
+        .color-check-item:hover { border-color: var(--gold-accent); }
         .color-check-item input[type="checkbox"] {
-            width: auto;
-            cursor: pointer;
+            width: auto; cursor: pointer;
         }
 
         /* Color & Size Variant Section */
         .color-variant-block {
-            background: #0b1329;
-            border: 1px solid #2a3c6e;
+            background: var(--input-bg);
+            border: 1px solid var(--input-border);
             border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 10px;
+            padding: 14px;
+            margin-bottom: 12px;
         }
         .color-variant-header {
             font-size: 13px;
             font-weight: bold;
-            color: #38bdf8;
-            margin-bottom: 8px;
+            color: var(--gold-accent);
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 6px;
@@ -144,125 +180,125 @@
         }
         .size-stock-card {
             background: #131e3a;
-            border: 1px solid #1e2d54;
-            padding: 6px;
+            border: 1px solid var(--input-border);
+            padding: 8px;
             border-radius: 8px;
             text-align: center;
         }
         .size-stock-card span {
             font-size: 11px;
             font-weight: bold;
-            color: #60a5fa;
+            color: var(--text-muted);
             display: block;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
         .size-stock-card input {
             width: 100%;
             padding: 4px;
             text-align: center;
             font-size: 12px;
-            border-radius: 4px;
-            border: 1px solid #2a3c6e;
-            background: #0b1329;
+            border-radius: 6px;
+            border: 1px solid var(--input-border);
+            background: var(--input-bg);
             color: #fff;
         }
 
         .file-input-wrapper { 
-            background-color: #0b1329; border: 2px dashed #2a3c6e; 
-            padding: 20px; border-radius: 12px; text-align: center; cursor: pointer; position: relative; color: #94a3b8; font-size: 13px; font-weight: 600;
+            background-color: var(--input-bg); border: 2px dashed var(--input-border); 
+            padding: 24px; border-radius: 12px; text-align: center; cursor: pointer; position: relative; color: var(--text-muted); font-size: 13px; font-weight: 600;
+            transition: 0.2s;
         }
+        .file-input-wrapper:hover { border-color: var(--gold-accent); }
         .file-input-wrapper input[type="file"] { position: absolute; left: 0; top: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
 
         .preview-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 15px; }
-        .preview-item { position: relative; width: 70px; height: 70px; }
-        .preview-thumbnail { width: 100%; height: 100%; border-radius: 8px; object-fit: cover; border: 1px solid #2a3c6e; }
+        .preview-item { position: relative; width: 75px; height: 75px; }
+        .preview-thumbnail { width: 100%; height: 100%; border-radius: 10px; object-fit: cover; border: 1px solid var(--input-border); }
         .remove-img-btn { 
             position: absolute; top: -6px; right: -6px; 
             background: #ef4444; color: white; border: none; border-radius: 50%; 
-            width: 20px; height: 20px; font-size: 11px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; 
+            width: 22px; height: 22px; font-size: 11px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; 
         }
 
         .btn-add { 
-            background: #2563eb; color: white; border: none; padding: 14px; 
-            width: 100%; border-radius: 12px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: 0.2s;
+            background: var(--gold-gradient); color: #000; border: none; padding: 15px; 
+            width: 100%; border-radius: 12px; font-size: 15px; font-weight: 800; cursor: pointer; margin-top: 10px; transition: 0.2s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
         }
-        .btn-add:hover { background: #1d4ed8; }
+        .btn-add:hover { opacity: 0.95; transform: translateY(-1px); }
 
-        .section-title { font-size: 16px; font-weight: 800; color: #ffffff; margin: 25px 0 12px 0; width: 100%; text-align: left; display: flex; align-items: center; gap: 8px; }
+        .section-title { font-size: 16px; font-weight: 800; color: #ffffff; margin: 30px 0 14px 0; width: 100%; text-align: left; display: flex; align-items: center; gap: 10px; }
         
         .product-list, .order-list { width: 100%; }
 
         .admin-prod-card, .order-card { 
-            background: #131e3a; border: 1px solid #1e2d54; 
-            border-radius: 16px; padding: 14px; margin-bottom: 12px; 
-            display: flex; align-items: center; justify-content: space-between; gap: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            padding: 16px; margin-bottom: 14px; 
+            display: flex; align-items: center; justify-content: space-between; gap: 14px;
         }
 
         .order-card { flex-direction: column; align-items: flex-start; }
 
-        .admin-prod-card img { width: 65px; height: 65px; object-fit: cover; border-radius: 10px; border: 1px solid #2a3c6e; }
+        .admin-prod-card img { width: 70px; height: 70px; object-fit: cover; border-radius: 12px; border: 1px solid var(--input-border); }
         .prod-info, .order-info { flex-grow: 1; text-align: left; width: 100%; }
-        .prod-name { font-size: 14px; font-weight: 700; color: #ffffff; }
-        .prod-price { font-size: 14px; font-weight: 800; color: #60a5fa; margin-top: 2px; }
-        .prod-desc { font-size: 12px; color: #94a3b8; margin-top: 4px; line-height: 1.3; }
+        .prod-name { font-size: 15px; font-weight: 700; color: #ffffff; }
+        .prod-price { font-size: 15px; font-weight: 800; color: var(--gold-accent); margin-top: 2px; }
+        .prod-desc { font-size: 12px; color: var(--text-muted); margin-top: 4px; line-height: 1.4; }
 
-        .order-row { font-size: 13px; color: #cbd5e1; margin-bottom: 4px; }
+        .order-row { font-size: 13px; color: #cbd5e1; margin-bottom: 5px; }
         .order-row b { color: #ffffff; }
-        .order-code-badge { background: #0b1329; border: 1px solid #2a3c6e; padding: 2px 8px; border-radius: 6px; font-size: 11px; color: #3b82f6; font-weight: bold; }
+        .order-code-badge { background: var(--input-bg); border: 1px solid var(--input-border); padding: 3px 8px; border-radius: 6px; font-size: 11px; color: var(--gold-accent); font-weight: bold; }
 
-        .stats-container { margin-top: 6px; display: flex; gap: 6px; flex-wrap: wrap; }
-        .stat-badge { font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 6px; }
-        .stat-views { background-color: #0b1329; border: 1px solid #2a3c6e; color: #38bdf8; }
-        .stat-orders { background-color: #0b1329; border: 1px solid #2a3c6e; color: #60a5fa; }
-        .stat-category { background-color: #0b1329; border: 1px solid #2a3c6e; color: #f59e0b; }
-        .stat-sizes { background-color: #0b1329; border: 1px solid #2a3c6e; color: #a855f7; }
-        .stat-colors { background-color: #0b1329; border: 1px solid #2a3c6e; color: #ec4899; }
-        .stat-status-in { background-color: rgba(16, 185, 129, 0.15); color: #10b981; }
-        .stat-status-out { background-color: rgba(239, 68, 68, 0.15); color: #ef4444; }
-        .stat-stock { background-color: #0b1329; border: 1px solid #2a3c6e; color: #10b981; }
+        .stats-container { margin-top: 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+        .stat-badge { font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 8px; }
+        .stat-views { background-color: var(--input-bg); border: 1px solid var(--input-border); color: #38bdf8; }
+        .stat-orders { background-color: var(--input-bg); border: 1px solid var(--input-border); color: #60a5fa; }
+        .stat-sizes { background-color: var(--input-bg); border: 1px solid var(--input-border); color: #a855f7; }
+        .stat-colors { background-color: var(--input-bg); border: 1px solid var(--input-border); color: #ec4899; }
+        .stat-status-in { background-color: rgba(16, 185, 129, 0.15); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.3); }
+        .stat-status-out { background-color: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+        .stat-stock { background-color: var(--input-bg); border: 1px solid var(--input-border); color: var(--gold-accent); }
 
-        .prod-actions { display: flex; flex-direction: column; gap: 6px; }
+        .prod-actions { display: flex; flex-direction: column; gap: 8px; }
 
         .btn-edit { 
-            background-color: rgba(59, 130, 246, 0.15); color: #60a5fa; 
-            border: 1px solid rgba(59, 130, 246, 0.3); padding: 6px 10px; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; transition: 0.2s;
+            background-color: rgba(212, 175, 55, 0.15); color: var(--gold-accent); 
+            border: 1px solid rgba(212, 175, 55, 0.3); padding: 8px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; cursor: pointer; transition: 0.2s;
         }
-        .btn-edit:hover { background-color: #2563eb; color: white; }
+        .btn-edit:hover { background-color: var(--gold-accent); color: #000; }
 
         .btn-delete { 
             background-color: rgba(239, 68, 68, 0.15); color: #ef4444; 
-            border: 1px solid rgba(239, 68, 68, 0.3); padding: 6px 10px; border-radius: 8px; font-size: 11px; font-weight: 700; cursor: pointer; transition: 0.2s;
+            border: 1px solid rgba(239, 68, 68, 0.3); padding: 8px 12px; border-radius: 10px; font-size: 11px; font-weight: 700; cursor: pointer; transition: 0.2s;
         }
         .btn-delete:hover { background-color: #ef4444; color: white; }
 
         .btn-complete { 
-            background-color: #10b981; color: white; border: none; 
-            padding: 10px 16px; border-radius: 8px; font-size: 12px; font-weight: 700; cursor: pointer; width: 100%; margin-top: 8px; transition: 0.2s;
+            background: linear-gradient(135deg, #10b981, #059669); color: white; border: none; 
+            padding: 12px 16px; border-radius: 10px; font-size: 12px; font-weight: 700; cursor: pointer; width: 100%; margin-top: 10px; transition: 0.2s;
         }
-        .btn-complete:hover { background-color: #059669; }
+        .btn-complete:hover { opacity: 0.9; }
 
         .empty-text { 
-            color:#94a3b8; font-size:14px; text-align:center; padding: 25px; 
-            background: #131e3a; border-radius:16px; border: 1px solid #1e2d54; width: 100%;
+            color: var(--text-muted); font-size: 14px; text-align: center; padding: 30px; 
+            width: 100%;
         }
 
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(11, 19, 41, 0.8); backdrop-filter: blur(5px);
+            background: rgba(7, 11, 25, 0.85); backdrop-filter: blur(8px);
             display: none; justify-content: center; align-items: center; z-index: 10000; padding: 20px;
         }
         .modal-box {
-            background: #131e3a; border: 1px solid #1e2d54; border-radius: 20px;
-            padding: 24px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; padding: 28px;
         }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px; }
         .modal-header h3 { font-size: 18px; color: #ffffff; }
-        .btn-close-modal { background: none; border: none; color: #94a3b8; font-size: 20px; cursor: pointer; }
+        .btn-close-modal { background: none; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
         .btn-save-edit {
-            background: #2563eb; color: white; border: none; padding: 12px; width: 100%;
-            border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; margin-top: 10px;
+            background: var(--gold-gradient); color: #000; border: none; padding: 14px; width: 100%;
+            border-radius: 12px; font-weight: bold; cursor: pointer; font-size: 14px; margin-top: 10px;
         }
-        .btn-save-edit:hover { background: #1d4ed8; }
+        .btn-save-edit:hover { opacity: 0.95; }
 
         .dot-icon { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
     </style>
@@ -270,7 +306,7 @@
 <body>
 
     <div id="loginOverlay" class="login-overlay">
-        <div class="login-box">
+        <div class="login-box glass-box">
             <h3>🔒 ASAR SPORT АДМИН</h3>
             <input type="password" id="adminPasswordInput" placeholder="Нэвтрэх код оруулна уу...">
             <button class="btn-login" onclick="window.checkAdminPassword()">Нэвтрэх</button>
@@ -286,19 +322,18 @@
             <button class="btn-logout" onclick="window.adminLogout()"><i class="fa-solid fa-right-from-bracket"></i> Гарах</button>
         </div>
 
-        <!-- 1. Нийт орлогын картыг энд 2 баганатай харагддаг болгож нэмсэн -->
         <div class="stats-grid">
-            <div class="site-visit-card">
+            <div class="site-visit-card glass-box">
                 <div class="site-visit-title"><i class="fa-solid fa-eye"></i> Дэлгүүрт ирсэн</div>
                 <div class="site-visit-count" id="siteTotalVisits">0</div>
             </div>
-            <div class="site-visit-card" style="border-color: #10b981;">
+            <div class="site-visit-card glass-box">
                 <div class="site-visit-title" style="color: #34d399;"><i class="fa-solid fa-wallet"></i> Нийт орлого</div>
                 <div class="site-visit-count" id="siteTotalRevenue" style="color: #10b981;">0₮</div>
             </div>
         </div>
 
-        <div class="admin-box">
+        <div class="admin-box glass-box">
             <div class="form-group">
                 <label>Бүтээгдэхүүний зургууд оруулах</label>
                 <div class="file-input-wrapper">
@@ -313,21 +348,9 @@
                 <input type="text" id="prodName" placeholder="Жишээ: Nike Pro Спорт цамц">
             </div>
 
+            <!-- Өнгө сонгох хэсэг -->
             <div class="form-group">
-                <label>Ангилал сонгох</label>
-                <select id="prodCategory">
-                    <option value="Спорт хувцас">👕 Спорт хувцас</option>
-                    <option value="Спорт гутал">👟 Спорт гутал</option>
-                    <option value="Тоног төхөөрөмж">🏋️ Тоног төхөөрөмж</option>
-                    <option value="Спорт цүнх">🎒 Спорт цүнх</option>
-                    <option value="Дагалдах хэрэгсэл">🎧 Дагалдах хэрэгсэл</option>
-                    <option value="Бусад">🔄 Бусад</option>
-                </select>
-            </div>
-
-            <!-- 2. Өнгө дээр дарахад Хэмжээ ба Үлдэгдэл тоорох талбарыг үүсгэх хэсэг -->
-            <div class="form-group">
-                <label>Байгаа өнгөнүүдийг сонгоно уу</label>
+                <label>Байгаа өнгөнүүдийг сонгоно уу (Заавал биш)</label>
                 <div class="color-checkbox-group" id="addColorCheckboxes">
                     <label class="color-check-item"><input type="checkbox" value="Хар" onchange="window.renderVariantInputs('add')"><span class="dot-icon" style="background:#000;"></span> Хар</label>
                     <label class="color-check-item"><input type="checkbox" value="Цагаан" onchange="window.renderVariantInputs('add')"><span class="dot-icon" style="background:#fff;"></span> Цагаан</label>
@@ -340,10 +363,11 @@
                 </div>
             </div>
 
+            <!-- Өнгө эсвэл Нийт тоо ширхэг харуулах контейнер -->
             <div class="form-group">
-                <label>Өнгө тус бүрийн хэмжээ ба үлдэгдэл тоо</label>
+                <label id="addVariantsLabel">Нийт үлдэгдэл тоо ширхэг</label>
                 <div id="addVariantsContainer">
-                    <p style="font-size: 12px; color: #94a3b8;">Дээрхээс өнгө сонгоно уу...</p>
+                    <input type="number" id="addSimpleStock" placeholder="Үлдэгдэл тоог оруулна уу..." min="0" value="1">
                 </div>
             </div>
 
@@ -368,19 +392,20 @@
             <button class="btn-add" id="btnAddProduct" onclick="window.addProduct()">＋ Шинэ бараа нэмэх</button>
         </div>
 
-        <div class="section-title"><i class="fa-solid fa-receipt" style="color: #60a5fa;"></i> Ирсэн бодит захиалгууд</div>
+        <div class="section-title"><i class="fa-solid fa-receipt" style="color: var(--gold-accent);"></i> Ирсэн бодит захиалгууд</div>
         <div class="order-list" id="adminOrderList">
-            <p class="empty-text">Шинэ захиалга байхгүй байна...</p>
+            <p class="empty-text glass-box">Шинэ захиалга байхгүй байна...</p>
         </div>
 
-        <div class="section-title"><i class="fa-solid fa-chart-simple" style="color: #60a5fa;"></i> Барааны хандалт & Статистик</div>
+        <div class="section-title"><i class="fa-solid fa-chart-simple" style="color: var(--gold-accent);"></i> Барааны хандалт & Статистик</div>
         <div class="product-list" id="adminProductList">
-            <p class="empty-text">Ачаалж байна...</p>
+            <p class="empty-text glass-box">Ачаалж байна...</p>
         </div>
     </div>
 
+    <!-- Edit Modal -->
     <div id="editModal" class="modal-overlay">
-        <div class="modal-box">
+        <div class="modal-box glass-box">
             <div class="modal-header">
                 <h3>✏️ Бараа засах</h3>
                 <button class="btn-close-modal" onclick="window.closeEditModal()">✕</button>
@@ -390,18 +415,6 @@
             <div class="form-group">
                 <label>Барааны нэр</label>
                 <input type="text" id="editProdName">
-            </div>
-
-            <div class="form-group">
-                <label>Ангилал</label>
-                <select id="editProdCategory">
-                    <option value="Спорт хувцас">👕 Спорт хувцас</option>
-                    <option value="Спорт гутал">👟 Спорт гутал</option>
-                    <option value="Тоног төхөөрөмж">🏋️ Тоног төхөөрөмж</option>
-                    <option value="Спорт цүнх">🎒 Спорт цүнх</option>
-                    <option value="Дагалдах хэрэгсэл">🎧 Дагалдах хэрэгсэл</option>
-                    <option value="Бусад">🔄 Бусад</option>
-                </select>
             </div>
 
             <div class="form-group">
@@ -419,9 +432,9 @@
             </div>
 
             <div class="form-group">
-                <label>Өнгө тус бүрийн хэмжээ ба үлдэгдэл тоо</label>
+                <label id="editVariantsLabel">Нийт үлдэгдэл тоо ширхэг</label>
                 <div id="editVariantsContainer">
-                    <p style="font-size: 12px; color: #94a3b8;">Дээрхээс өнгө сонгоно уу...</p>
+                    <input type="number" id="editSimpleStock" placeholder="Үлдэгдэл тоог оруулна уу..." min="0">
                 </div>
             </div>
 
@@ -496,7 +509,7 @@
             document.getElementById("loginOverlay").style.display = "none";
             document.getElementById("adminMainContent").style.display = "block";
             loadSiteVisits();
-            loadTotalRevenue(); // Нийт орлогыг дуудах
+            loadTotalRevenue();
             loadProducts();
             loadOrders();
         }
@@ -508,11 +521,28 @@
             });
         }
 
-        // Firebase-аас нийт орлогыг унших функц
+        // ШИНЭЧИЛСЭН: Нийт орлогыг автоматаар нэгтгэн унших функц
         function loadTotalRevenue() {
             database.ref('total_revenue').on('value', function(snapshot) {
-                var revenue = snapshot.val() || 0;
-                document.getElementById('siteTotalRevenue').innerText = parseInt(revenue).toLocaleString() + '₮';
+                let revenueFromDB = parseInt(snapshot.val()) || 0;
+
+                database.ref('orders').on('value', function(orderSnapshot) {
+                    let activeOrdersTotal = 0;
+                    if (orderSnapshot.exists()) {
+                        orderSnapshot.forEach(function(child) {
+                            let order = child.val();
+                            let rawPrice = order.price || order.totalAmount || 0;
+                            let price = parseInt(rawPrice.toString().replace(/[^0-9]/g, '')) || 0;
+                            activeOrdersTotal += price;
+                        });
+                    }
+
+                    let finalRevenue = revenueFromDB + activeOrdersTotal;
+                    let revenueElem = document.getElementById('siteTotalRevenue');
+                    if (revenueElem) {
+                        revenueElem.innerText = finalRevenue.toLocaleString() + '₮';
+                    }
+                });
             });
         }
 
@@ -561,19 +591,26 @@
             renderThumbnails();
         };
 
-        // Өнгө сонгох бүрд Dynamic Variant Inputs үүсгэх логик
-        window.renderVariantInputs = function(type, existingVariants = {}) {
+        // Өнгө ба Size render хийх систем (Өнгөгүй үед Нийт үлдэгдлийг л оруулах боломжтой)
+        window.renderVariantInputs = function(type, existingVariants = {}, existingStock = 0) {
             var checkboxGroupId = type === 'add' ? 'addColorCheckboxes' : 'editColorCheckboxes';
             var containerId = type === 'add' ? 'addVariantsContainer' : 'editVariantsContainer';
+            var labelId = type === 'add' ? 'addVariantsLabel' : 'editVariantsLabel';
             
             var checkboxes = document.querySelectorAll('#' + checkboxGroupId + ' input[type="checkbox"]:checked');
             var container = document.getElementById(containerId);
+            var label = document.getElementById(labelId);
             container.innerHTML = "";
 
             if (checkboxes.length === 0) {
-                container.innerHTML = '<p style="font-size: 12px; color: #94a3b8;">Дээрхээс өнгө сонгоно уу...</p>';
+                label.innerText = "Нийт үлдэгдэл тоо ширхэг";
+                var inputId = type === 'add' ? 'addSimpleStock' : 'editSimpleStock';
+                var val = existingStock || 1;
+                container.innerHTML = `<input type="number" id="${inputId}" placeholder="Үлдэгдэл тоог оруулна уу..." min="0" value="${val}">`;
                 return;
             }
+
+            label.innerText = "Өнгө тус бүрийн хэмжээ ба үлдэгдэл тоо";
 
             checkboxes.forEach(function(cb) {
                 var color = cb.value;
@@ -600,7 +637,26 @@
             });
         };
 
-        function getVariantsData(containerId) {
+        function getVariantsData(type) {
+            var checkboxGroupId = type === 'add' ? 'addColorCheckboxes' : 'editColorCheckboxes';
+            var containerId = type === 'add' ? 'addVariantsContainer' : 'editVariantsContainer';
+            var simpleInputId = type === 'add' ? 'addSimpleStock' : 'editSimpleStock';
+
+            var checkboxes = document.querySelectorAll('#' + checkboxGroupId + ' input[type="checkbox"]:checked');
+            
+            if (checkboxes.length === 0) {
+                var simpleInput = document.getElementById(simpleInputId);
+                var total = simpleInput ? (parseInt(simpleInput.value) || 0) : 0;
+                return {
+                    variants: null,
+                    colors: [],
+                    sizes: [],
+                    colorStocks: {},
+                    sizeStocks: {},
+                    totalStock: total
+                };
+            }
+
             var container = document.getElementById(containerId);
             var blocks = container.querySelectorAll('.color-variant-block');
             
@@ -653,7 +709,7 @@
                 listDiv.innerHTML = "";
                 allProductsCache = {};
                 if (!snapshot.exists()) { 
-                    listDiv.innerHTML = '<p class="empty-text">Бараа байхгүй байна...</p>';
+                    listDiv.innerHTML = '<p class="empty-text glass-box">Бараа байхгүй байна...</p>';
                     return; 
                 }
                 snapshot.forEach(function(childSnapshot) {
@@ -685,7 +741,7 @@
                     var sizesText = (prod.sizes && prod.sizes.length > 0) ? prod.sizes.join(', ') : 'Сонгоогүй';
 
                     var row = document.createElement("div");
-                    row.className = "admin-prod-card";
+                    row.className = "admin-prod-card glass-box";
                     row.innerHTML = 
                         '<img src="' + mainImg + '" alt="">' +
                         '<div class="prod-info">' +
@@ -694,7 +750,6 @@
                             (prod.description ? '<div class="prod-desc">' + prod.description + '</div>' : '') +
                             '<div class="stats-container">' +
                                 statusBadge +
-                                '<span class="stat-badge stat-category">🏷️ ' + (prod.category || 'Спорт хувцас') + '</span>' +
                                 '<span class="stat-badge stat-colors">🎨 ' + colorsText + '</span>' +
                                 '<span class="stat-badge stat-sizes">📏 ' + sizesText + '</span>' +
                                 '<span class="stat-badge stat-stock">📦 Нийт үлдэгдэл: ' + totalStock + '</span>' +
@@ -716,7 +771,7 @@
             database.ref('orders').on('value', function(snapshot) {
                 orderDiv.innerHTML = "";
                 if (!snapshot.exists()) { 
-                    orderDiv.innerHTML = '<p class="empty-text">Шинэ захиалга байхгүй байна...</p>';
+                    orderDiv.innerHTML = '<p class="empty-text glass-box">Шинэ захиалга байхгүй байна...</p>';
                     return; 
                 }
                 snapshot.forEach(function(childSnapshot) {
@@ -729,7 +784,7 @@
                     var price = order.price || order.totalAmount || 0;
 
                     var card = document.createElement("div");
-                    card.className = "order-card";
+                    card.className = "order-card glass-box";
                     card.innerHTML = 
                         '<div class="order-info">' +
                             '<div class="order-row"><b>📧 Gmail:</b> ' + (order.email || 'Байхгүй') + '</div>' +
@@ -750,12 +805,11 @@
         window.addProduct = function() {
             var name = document.getElementById("prodName").value.trim();
             var price = document.getElementById("prodPrice").value.trim();
-            var category = document.getElementById("prodCategory").value;
             var description = document.getElementById("prodDesc").value.trim();
             var status = document.getElementById("prodStatus").value;
             var btn = document.getElementById("btnAddProduct");
 
-            var variantData = getVariantsData('addVariantsContainer');
+            var variantData = getVariantsData('add');
 
             if (selectedBase64Images.length === 0) { alert("Барааны зургийг оруулна уу!"); return; }
             if (!name || !price) { alert("Нэр болон үнийг оруулна уу!"); return; }
@@ -766,7 +820,6 @@
             database.ref('products').push({
                 images: selectedBase64Images,
                 name: name,
-                category: category,
                 variants: variantData.variants,
                 colors: variantData.colors,
                 colorStocks: variantData.colorStocks,
@@ -789,7 +842,7 @@
                 document.getElementById("prodStatus").value = "in_stock";
                 
                 document.querySelectorAll('#addColorCheckboxes input[type="checkbox"]').forEach(c => c.checked = false);
-                document.getElementById('addVariantsContainer').innerHTML = '<p style="font-size: 12px; color: #94a3b8;">Дээрхээс өнгө сонгоно уу...</p>';
+                window.renderVariantInputs('add');
 
                 selectedBase64Images = [];
             }).finally(function() {
@@ -803,7 +856,6 @@
 
             document.getElementById("editProdId").value = prodId;
             document.getElementById("editProdName").value = prod.name || "";
-            document.getElementById("editProdCategory").value = prod.category || "Спорт хувцас";
             document.getElementById("editProdPrice").value = prod.price || 0;
             document.getElementById("editProdDesc").value = prod.description || "";
             document.getElementById("editProdStatus").value = prod.status || "in_stock";
@@ -813,7 +865,7 @@
                 cb.checked = (prod.colors && prod.colors.includes(cb.value)) || (prod.variants && prod.variants[cb.value] !== undefined);
             });
 
-            window.renderVariantInputs('edit', prod.variants || {});
+            window.renderVariantInputs('edit', prod.variants || {}, prod.stock || 0);
 
             document.getElementById("editModal").style.display = "flex";
         };
@@ -825,12 +877,11 @@
         window.saveProductEdit = function() {
             var prodId = document.getElementById("editProdId").value;
             var name = document.getElementById("editProdName").value.trim();
-            var category = document.getElementById("editProdCategory").value;
             var price = document.getElementById("editProdPrice").value.toString().trim();
             var description = document.getElementById("editProdDesc").value.trim();
             var status = document.getElementById("editProdStatus").value;
             
-            var variantData = getVariantsData('editVariantsContainer');
+            var variantData = getVariantsData('edit');
 
             if(!name || !price) {
                 alert("Нэр болон үнийг заавал бичнэ үү!");
@@ -841,7 +892,6 @@
 
             database.ref('products/' + prodId).update({
                 name: name,
-                category: category,
                 variants: variantData.variants,
                 colors: variantData.colors,
                 colorStocks: variantData.colorStocks,
@@ -865,14 +915,12 @@
             }
         };
 
-        // Захиалга хүргэгдэхэд Нийт Орлого болон Үлдэгдлийг зэрэг бодож шинэчлэх
         window.completeOrder = function(orderId, productId, selectedSize, selectedColor, orderPrice) {
             if (confirm("Энэ захиалгыг хүргэгдсэн гэж хааж, орлогыг нэмэн, үлдэгдлийг хасах уу?")) {
                 var cleanSize = selectedSize ? selectedSize.toString().trim() : '';
                 var cleanColor = selectedColor ? selectedColor.toString().trim() : '';
                 var priceToAdd = parseInt(orderPrice) || 0;
 
-                // 1. Нийт орлогыг нэмэх transaction
                 database.ref('total_revenue').transaction(function(currentRevenue) {
                     return (currentRevenue || 0) + priceToAdd;
                 });
@@ -884,7 +932,6 @@
                     return;
                 }
 
-                // 2. Үлдэгдэл болон өнгө, хэмжээний тоо ширхгийг хасах
                 database.ref('products/' + productId).transaction(function(product) {
                     if (product) {
                         if (product.variants && cleanColor && cleanSize) {

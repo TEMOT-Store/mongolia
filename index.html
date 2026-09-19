@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Asar Sport Mongolia</title>
+    <title>TEMOT</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -16,8 +16,8 @@
         html, body {
             width: 100%;
             height: 100%;
-            background-color: #0f172a !important; 
-            color: #f8fafc; 
+            background-color: #ffffff !important; 
+            color: #0f172a; 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
             -webkit-tap-highlight-color: transparent;
             overflow-x: hidden;
@@ -28,66 +28,53 @@
         }
 
         .navbar {
-            background-color: #0f172a;
+            background-color: #ffffff;
             width: 100%;
-            padding: 12px 5%;
+            padding: 16px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #1e293b;
+            border-bottom: 1px solid #e2e8f0;
         }
 
         .nav-logo {
-            font-size: 18px;
+            display: flex;
+            align-items: center;
+            font-size: 20px;
             font-weight: 900;
-            color: #ffffff;
+            color: #000000; /* TE хэсэг хар өнгө */
             text-decoration: none;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             text-transform: uppercase;
         }
 
-        .nav-logo span { color: #2563eb; }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 13px;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-
-        .nav-links a:hover, .nav-links a.active { color: #38bdf8; }
+        .nav-logo span { color: #d4af37; } /* MOT хэсэг шар өнгө */
 
         .cart-status {
             font-weight: 700;
             font-size: 12px;
-            color: #ffffff;
+            color: #0f172a;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
             text-decoration: none;
-            background: #1e293b;
-            padding: 6px 14px;
+            background: #f1f5f9;
+            padding: 8px 16px;
             border-radius: 20px;
-            border: 1px solid #334155;
+            border: 1px solid #e2e8f0;
             transition: all 0.3s ease;
             white-space: nowrap;
             line-height: 1;
         }
 
         .cart-status:hover {
-            background: #2563eb;
-            border-color: #2563eb;
+            background: #111827;
+            color: #d4af37;
+            border-color: #d4af37;
         }
 
         .main-container {
@@ -95,62 +82,80 @@
             max-width: 1200px;
             padding: 0 4%;
             margin: 0 auto;
-            background-color: #0f172a;
+            background-color: #ffffff;
         }
 
+        /* LUXURY HERO BANNER */
         .hero-banner {
-            margin: 16px 0;
-            background-color: #1e293b;
-            background-image: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(30, 41, 59, 0.75) 100%), 
-                              url('https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1200&auto=format&fit=crop');
-            background-repeat: no-repeat;
-            background-position: center center;
-            background-size: cover;
+            margin: 16px 0 20px 0;
+            background: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 60%, #2b261f 100%);
             border-radius: 16px;
-            padding: 40px 28px;
+            padding: 28px 24px;
             position: relative;
             overflow: hidden;
-            border: 1px solid #1e293b;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid #d4af37;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 150px;
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, rgba(0,0,0,0) 70%);
+            pointer-events: none;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 550px;
+            max-width: 100%;
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            background: rgba(37, 99, 235, 0.2);
-            border: 1px solid #2563eb;
-            color: #38bdf8;
-            font-size: 10px;
+            gap: 6px;
+            background: rgba(212, 175, 55, 0.12);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            color: #d4af37;
+            font-size: 9px;
             font-weight: 800;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             padding: 4px 10px;
             border-radius: 12px;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             text-transform: uppercase;
         }
 
         .hero-banner h1 { 
-            font-size: 2rem; 
+            font-size: 1.6rem; 
             font-weight: 900; 
-            margin-bottom: 10px; 
-            letter-spacing: 1px; 
+            margin-bottom: 12px; 
+            letter-spacing: 2px; 
             line-height: 1.2;
-            color: #ffffff;
             text-transform: uppercase;
         }
 
-        .btn-hero {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+        .hero-banner h1 .text-white {
             color: #ffffff;
+        }
+
+        .hero-banner h1 .text-gold {
+            color: #d4af37;
+        }
+
+        .btn-hero {
+            background-color: #d4af37; /* Барааны карт дээрх яг ижил шар өнгө */
+            color: #000000;
             border: none;
-            padding: 10px 20px;
+            padding: 9px 18px;
             border-radius: 20px;
             font-size: 11px;
             font-weight: 800;
@@ -158,18 +163,19 @@
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 4px 14px rgba(212, 175, 55, 0.3);
             transition: all 0.3s ease;
+            letter-spacing: 0.5px;
         }
 
         .btn-hero:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            box-shadow: 0 6px 18px rgba(212, 175, 55, 0.5);
+            background-color: #e5bd38;
         }
 
         .search-bar-wrapper {
-            margin-bottom: 16px;
+            margin-bottom: 24px;
             position: relative;
             width: 100%;
         }
@@ -177,18 +183,19 @@
         .search-input {
             width: 100%;
             padding: 12px 14px 12px 40px;
-            background: #1e293b;
-            border: 1px solid #334155;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
             border-radius: 10px;
-            color: #ffffff;
-            font-size: 12px;
+            color: #0f172a;
+            font-size: 13px;
             outline: none;
             transition: 0.3s;
         }
 
         .search-input:focus { 
-            border-color: #2563eb; 
-            box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+            border-color: #d4af37; 
+            background: #ffffff;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
         }
 
         .search-icon { 
@@ -196,61 +203,19 @@
             left: 14px; 
             top: 50%; 
             transform: translateY(-50%); 
-            color: #38bdf8; 
+            color: #94a3b8; 
             font-size: 13px; 
-        }
-
-        .categories-grid {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 6px;
-            margin-bottom: 20px;
-            scrollbar-width: none;
-        }
-
-        .categories-grid::-webkit-scrollbar { display: none; }
-
-        .category-card {
-            background: #1e293b;
-            border: 1px solid #334155;
-            border-radius: 10px;
-            padding: 8px 16px;
-            text-align: center;
-            cursor: pointer;
-            white-space: nowrap;
-            flex: 0 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .category-card:hover { 
-            border-color: #2563eb; 
-            background: #334155; 
-        }
-
-        .category-card i { 
-            font-size: 13px; 
-            color: #38bdf8; 
-        }
-
-        .category-card span { 
-            font-size: 12px; 
-            font-weight: 700; 
-            color: #f1f5f9; 
         }
 
         .section-header { 
-            margin-bottom: 14px; 
+            margin-bottom: 16px; 
             text-align: left;
         }
 
         .section-title { 
             font-size: 1.2rem; 
             font-weight: 800; 
-            color: #ffffff; 
+            color: #0f172a; 
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
@@ -258,15 +223,15 @@
         .product-container { 
             display: grid !important; 
             grid-template-columns: repeat(2, 1fr) !important; 
-            gap: 12px !important; 
+            gap: 16px !important; 
             width: 100% !important; 
         }
 
         .product-card { 
-            background: #1e293b; 
-            border: 1px solid #334155; 
+            background: #ffffff; 
+            border: 1px solid #e2e8f0; 
             border-radius: 12px; 
-            padding: 10px; 
+            padding: 12px; 
             display: flex !important; 
             flex-direction: column !important; 
             justify-content: space-between; 
@@ -274,12 +239,12 @@
             position: relative; 
             z-index: 1;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
         }
 
         .product-card:hover {
-            border-color: #2563eb;
-            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.25);
+            border-color: #d4af37;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.12);
             transform: translateY(-2px);
         }
 
@@ -287,8 +252,8 @@
 
         .out-of-stock-badge {
             position: absolute;
-            top: 14px;
-            left: 14px;
+            top: 18px;
+            left: 18px;
             background: #ef4444;
             color: #ffffff;
             font-size: 9px;
@@ -301,11 +266,11 @@
 
         .stock-badge {
             position: absolute;
-            top: 14px;
-            left: 14px;
-            background: rgba(15, 23, 42, 0.85);
-            border: 1px solid #334155;
-            color: #38bdf8;
+            top: 18px;
+            left: 18px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #e2e8f0;
+            color: #111827;
             font-size: 9px;
             font-weight: 800;
             padding: 3px 8px;
@@ -315,10 +280,10 @@
 
         .wishlist-btn { 
             position: absolute; 
-            top: 14px; 
-            right: 14px; 
-            background: rgba(15, 23, 42, 0.85); 
-            border: 1px solid #334155; 
+            top: 18px; 
+            right: 18px; 
+            background: rgba(255, 255, 255, 0.9); 
+            border: 1px solid #e2e8f0; 
             width: 28px; 
             height: 28px; 
             border-radius: 50%; 
@@ -345,39 +310,39 @@
 
         .product-card img { 
             width: 100% !important; 
-            height: 140px !important; 
+            height: 150px !important; 
             object-fit: cover; 
             border-radius: 8px; 
-            background-color: #0f172a; 
+            background-color: #f8fafc; 
         }
 
-        .product-info { padding: 8px 2px 0 2px; }
+        .product-info { padding: 10px 2px 0 2px; }
 
         .product-title { 
-            font-size: 12px; 
+            font-size: 13px; 
             font-weight: 700; 
             margin: 2px 0; 
-            color: #f8fafc; 
+            color: #0f172a; 
             display: -webkit-box; 
             -webkit-line-clamp: 2; 
             line-clamp: 2;
             -webkit-box-orient: vertical; 
             overflow: hidden; 
-            height: 32px; 
+            height: 34px; 
             line-height: 1.3; 
         }
 
         .product-price { 
             font-weight: 900; 
-            color: #38bdf8; 
+            color: #b8860b; 
             font-size: 14px; 
-            margin: 2px 0 6px 0; 
+            margin: 4px 0 6px 0; 
         }
 
-        .size-selection-wrapper, .color-selection-wrapper { margin: 4px 0 8px 0; }
+        .size-selection-wrapper, .color-selection-wrapper { margin: 6px 0 8px 0; }
         .size-label, .color-label {
             font-size: 9px;
-            color: #94a3b8;
+            color: #64748b;
             margin-bottom: 3px;
             font-weight: 700;
         }
@@ -389,9 +354,9 @@
         }
 
         .size-btn, .color-btn {
-            background: #0f172a;
-            border: 1px solid #334155;
-            color: #f8fafc;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #334155;
             padding: 4px 8px;
             border-radius: 6px;
             font-size: 10px;
@@ -402,15 +367,15 @@
         }
 
         .size-btn.selected, .color-btn.selected {
-            background: #2563eb;
-            border-color: #2563eb;
+            background: #0f172a;
+            border-color: #0f172a;
             color: #ffffff;
         }
 
         .btn-group { 
             display: flex; 
             gap: 6px; 
-            margin-top: auto; 
+            margin-top: 8px; 
             width: 100%; 
             position: relative;
             z-index: 5;
@@ -418,10 +383,10 @@
 
         .btn-buy { 
             flex: 1.2; 
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); 
+            background: #0f172a; 
             color: #ffffff; 
             border: none; 
-            padding: 8px 0; 
+            padding: 9px 0; 
             border-radius: 8px; 
             font-size: 11px; 
             cursor: pointer; 
@@ -433,21 +398,21 @@
             transition: all 0.2s;
         }
 
-        .btn-buy:hover { background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); }
+        .btn-buy:hover { background: #1e293b; }
 
         .btn-buy:disabled, .btn-cart:disabled {
-            background: #334155 !important;
-            color: #64748b !important;
-            border-color: #334155 !important;
+            background: #e2e8f0 !important;
+            color: #94a3b8 !important;
+            border-color: #e2e8f0 !important;
             cursor: not-allowed;
         }
 
         .btn-cart { 
             flex: 1; 
-            background: #0f172a; 
-            color: #38bdf8; 
-            border: 1px solid #2563eb; 
-            padding: 8px 0; 
+            background: #ffffff; 
+            color: #0f172a; 
+            border: 1px solid #e2e8f0; 
+            padding: 9px 0; 
             border-radius: 8px; 
             font-size: 11px; 
             cursor: pointer; 
@@ -456,8 +421,8 @@
         }
 
         .btn-cart:hover {
-            background: #2563eb;
-            color: #ffffff;
+            background: #f8fafc;
+            border-color: #cbd5e1;
         }
 
         .modal { 
@@ -468,67 +433,68 @@
             top: 0; 
             width: 100%; 
             height: 100%; 
-            background-color: rgba(15, 23, 42, 0.8); 
-            backdrop-filter: blur(6px); 
+            background-color: rgba(15, 23, 42, 0.4); 
+            backdrop-filter: blur(4px); 
             justify-content: center; 
             align-items: center; 
         }
 
         .modal-content { 
-            background-color: #1e293b; 
-            border: 1px solid #334155; 
-            color: #f8fafc; 
-            padding: 20px; 
+            background-color: #ffffff; 
+            border: 1px solid #e2e8f0; 
+            color: #0f172a; 
+            padding: 24px; 
             border-radius: 16px; 
             width: 92%; 
-            max-width: 400px; 
+            max-width: 420px; 
             position: relative; 
             max-height: 90vh; 
             overflow-y: auto; 
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .close-btn { 
             position: absolute; 
-            right: 14px; 
-            top: 10px; 
+            right: 16px; 
+            top: 12px; 
             font-size: 22px; 
             cursor: pointer; 
             color: #94a3b8; 
             z-index: 10;
         }
 
-        .close-btn:hover { color: #ffffff; }
+        .close-btn:hover { color: #0f172a; }
 
-        .product-detail-img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; border: 1px solid #334155; cursor: pointer; }
-        .product-detail-title { font-size: 15px; font-weight: 800; color: #ffffff; margin-bottom: 2px; }
-        .product-detail-price { font-size: 18px; font-weight: 900; color: #38bdf8; margin-bottom: 10px; }
-        .product-detail-description { background: #0f172a; padding: 10px; border-radius: 8px; border: 1px solid #334155; font-size: 12px; color: #cbd5e1; line-height: 1.4; margin-bottom: 12px; white-space: pre-line; }
+        .product-detail-img { width: 100%; height: 220px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; border: 1px solid #e2e8f0; cursor: pointer; }
+        .product-detail-title { font-size: 16px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+        .product-detail-price { font-size: 18px; font-weight: 900; color: #b8860b; margin-bottom: 12px; }
+        .product-detail-description { background: #f8fafc; padding: 12px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 12px; color: #475569; line-height: 1.5; margin-bottom: 14px; white-space: pre-line; }
 
-        .price-details { background-color: #0f172a; padding: 10px; border-radius: 10px; margin: 10px 0; border: 1px solid #334155; }
-        .price-text { font-weight: 700; color: #ffffff; font-size: 13px; text-align: center; margin-bottom: 4px; }
-        .price-row { display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 3px; color: #94a3b8; }
-        .total-text { color: #38bdf8; font-size: 14px; font-weight: 800; margin-top: 6px; border-top: 1px dashed #334155; padding-top: 6px; display: flex; justify-content: space-between; }
+        .price-details { background-color: #f8fafc; padding: 12px; border-radius: 10px; margin: 12px 0; border: 1px solid #e2e8f0; }
+        .price-text { font-weight: 700; color: #0f172a; font-size: 13px; text-align: center; margin-bottom: 6px; }
+        .price-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px; color: #64748b; }
+        .total-text { color: #b8860b; font-size: 15px; font-weight: 800; margin-top: 8px; border-top: 1px dashed #cbd5e1; padding-top: 8px; display: flex; justify-content: space-between; }
 
-        .modal-bank-card { background: #0f172a; border-radius: 10px; padding: 10px; margin-bottom: 10px; border: 1px solid #334155; }
-        .bank-info-row { display: flex; justify-content: space-between; align-items: center; font-size: 11px; margin-bottom: 4px; }
-        .bank-info-label { color: #94a3b8; }
-        .bank-info-value { font-weight: 700; color: #ffffff; }
+        .modal-bank-card { background: #f8fafc; border-radius: 10px; padding: 12px; margin-bottom: 12px; border: 1px solid #e2e8f0; }
+        .bank-info-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; margin-bottom: 6px; }
+        .bank-info-label { color: #64748b; }
+        .bank-info-value { font-weight: 700; color: #0f172a; }
 
-        .btn-copy { background-color: #334155; color: #ffffff; border: 1px solid #475569; padding: 2px 6px; font-size: 9px; border-radius: 4px; cursor: pointer; font-weight: bold; }
+        .btn-copy { background-color: #e2e8f0; color: #0f172a; border: 1px solid #cbd5e1; padding: 2px 8px; font-size: 10px; border-radius: 4px; cursor: pointer; font-weight: bold; }
 
-        .phone-input-group { margin-bottom: 8px; text-align: left; }
-        .phone-input-group label { display: block; font-size: 9px; font-weight: 700; color: #38bdf8; margin-bottom: 3px; text-transform: uppercase; }
-        .phone-input-group input { width: 100%; padding: 8px; background: #0f172a; border: 1px solid #334155; color: #ffffff; border-radius: 6px; font-size: 12px; outline: none; }
-        .phone-input-group input:focus { border-color: #2563eb; }
+        .phone-input-group { margin-bottom: 10px; text-align: left; }
+        .phone-input-group label { display: block; font-size: 10px; font-weight: 700; color: #b8860b; margin-bottom: 4px; text-transform: uppercase; }
+        .phone-input-group input { width: 100%; padding: 9px; background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; border-radius: 6px; font-size: 12px; outline: none; }
+        .phone-input-group input:focus { border-color: #d4af37; }
 
-        .address-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; margin-bottom: 8px; }
-        .address-group label { display: block; font-size: 9px; font-weight: 700; color: #38bdf8; margin-bottom: 2px; text-transform: uppercase; }
-        .address-group input { width: 100%; padding: 7px; background: #0f172a; border: 1px solid #334155; color: #ffffff; border-radius: 6px; font-size: 11px; outline: none; }
+        .address-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 10px; }
+        .address-group label { display: block; font-size: 10px; font-weight: 700; color: #b8860b; margin-bottom: 3px; text-transform: uppercase; }
+        .address-group input { width: 100%; padding: 8px; background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; border-radius: 6px; font-size: 11px; outline: none; }
 
-        .btn-close-modal { background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); color: #ffffff; border: none; padding: 10px; width: 100%; border-radius: 8px; font-size: 12px; cursor: pointer; font-weight: 800; }
+        .btn-close-modal { background: #0f172a; color: #ffffff; border: none; padding: 12px; width: 100%; border-radius: 8px; font-size: 13px; cursor: pointer; font-weight: 800; transition: background 0.2s; }
+        .btn-close-modal:hover { background: #1e293b; }
 
-        .image-preview-modal { display: none; position: fixed; z-index: 1100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); backdrop-filter: blur(8px); justify-content: center; align-items: center; }
+        .image-preview-modal { display: none; position: fixed; z-index: 1100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); justify-content: center; align-items: center; }
         .image-preview-wrapper { position: relative; max-width: 90%; max-height: 75vh; display: flex; justify-content: center; align-items: center; }
         .image-preview-content { max-width: 100%; max-height: 75vh; border-radius: 10px; object-fit: contain; }
         .image-preview-title { position: absolute; bottom: -40px; color: #ffffff; font-size: 12px; font-weight: 700; background: rgba(0, 0, 0, 0.6); padding: 4px 14px; border-radius: 16px; }
@@ -539,28 +505,23 @@
         .arrow-right { right: -10px; background: rgba(0, 0, 0, 0.5); }
 
         @media (min-width: 768px) { 
-            .product-container { grid-template-columns: repeat(4, 1fr) !important; gap: 16px !important; } 
-            .categories-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); }
-            .hero-banner { padding: 50px 36px; }
+            .product-container { grid-template-columns: repeat(4, 1fr) !important; gap: 20px !important; } 
+            .hero-banner { padding: 36px 48px; min-height: 180px; }
             .hero-banner h1 { font-size: 2.2rem; }
             .product-card img { height: 180px !important; }
         }
 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .main-container { padding: 0 3%; }
+            .main-container { padding: 0 4%; }
+            .hero-banner { padding: 20px 16px; }
+            .hero-banner h1 { font-size: 1.3rem; }
         }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <a href="#" class="nav-logo">Asar Sport <span>Mongolia</span></a>
-        <ul class="nav-links">
-            <li><a href="#" class="active">Нүүр</a></li>
-            <li><a href="#categories">Ангилал</a></li>
-            <li><a href="#homeProductGrid">Шинэ цуглуулга</a></li>
-        </ul>
+        <a href="#" class="nav-logo">TE<span>MOT</span></a>
         <div class="nav-right">
             <a href="cart.html" class="cart-status">
                 <i class="fa-solid fa-cart-shopping"></i> Сагс (<span id="headerCartCount">0</span>)
@@ -569,46 +530,20 @@
     </nav>
 
     <main class="main-container">
+        <!-- LUXURY HERO BANNER -->
         <header class="hero-banner">
             <div class="hero-content">
-                <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Шинэ спорт цуглуулга 2026</div>
-                <h1>Asar Sport Mongolia</h1>
+                <div class="hero-badge"><i class="fa-solid fa-crown"></i> Шинэ цуглуулга 2026</div>
+                <h1><span class="text-gold">TE</span><span class="text-gold">MOT</span></h1>
                 <button class="btn-hero" onclick="document.getElementById('homeProductGrid').scrollIntoView({behavior: 'smooth'});">
-                     <i class="fa-solid fa-arrow-right"></i>
+                     Шопинг хийх <i class="fa-solid fa-arrow-right"></i>
                 </button>
             </div>
         </header>
 
         <div class="search-bar-wrapper">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
-            <input type="text" id="searchInput" class="search-input" placeholder="Та ямар спорт бараа хайж байна?" oninput="window.filterProducts()">
-        </div>
-
-        <div id="categories" class="categories-grid">
-            <div class="category-card" onclick="window.filterByCategory('')">
-                <i class="fa-solid fa-border-all"></i>
-                <span>Бүгд</span>
-            </div>
-            <div class="category-card" onclick="window.filterByCategory('хувцас')">
-                <i class="fa-solid fa-shirt"></i>
-                <span>Спорт хувцас</span>
-            </div>
-            <div class="category-card" onclick="window.filterByCategory('гутал')">
-                <i class="fa-solid fa-shoe-prints"></i>
-                <span>Спорт гутал</span>
-            </div>
-            <div class="category-card" onclick="window.filterByCategory('хэрэгсэл')">
-                <i class="fa-solid fa-dumbbell"></i>
-                <span>Тоног төхөөрөмж</span>
-            </div>
-            <div class="category-card" onclick="window.filterByCategory('цүнх')">
-                <i class="fa-solid fa-briefcase"></i>
-                <span>Спорт цүнх</span>
-            </div>
-            <div class="category-card" onclick="window.filterByCategory('дагалдах')">
-                <i class="fa-solid fa-stopwatch"></i>
-                <span>Дагалдах хэрэгсэл</span>
-            </div>
+            <input type="text" id="searchInput" class="search-input" placeholder="Та ямар бараа хайж байна?" oninput="window.filterProducts()">
         </div>
 
         <div class="section-header">
@@ -616,7 +551,7 @@
         </div>
 
         <div class="product-container" id="homeProductGrid">
-            <p style='color:#94a3b8; font-size:12px; padding: 10px 0;'>Барааг ачаалж байна...</p>
+            <p style='color:#64748b; font-size:12px; padding: 10px 0;'>Барааг ачаалж байна...</p>
         </div>
     </main>
 
@@ -637,8 +572,8 @@
                 <div class="color-buttons-group" id="detailColorButtons"></div>
             </div>
 
-            <div style="font-size: 10px; font-weight: 700; color: #38bdf8; margin-bottom: 3px; text-transform: uppercase;">Бүтээгдэхүүний тайлбар:</div>
-            <div id="detailDescription" class="product-detail-description">Тайбар байхгүй.</div>
+            <div style="font-size: 10px; font-weight: 700; color: #b8860b; margin-bottom: 3px; text-transform: uppercase;">Бүтээгдэхүүний тайлбар:</div>
+            <div id="detailDescription" class="product-detail-description">Тайлбар байхгүй.</div>
 
             <div class="btn-group">
                 <button type="button" class="btn-buy" id="detailBuyBtn"><i class="fa-solid fa-bag-shopping"></i> Захиалах</button>
@@ -650,7 +585,7 @@
     <div id="orderModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="window.closeModal()">&times;</span>
-            <h3 style="text-align: center; font-size: 14px; font-weight: 800; margin-bottom:6px; color:#ffffff;">🛒 Захиалга Баталгаажуулах</h3>
+            <h3 style="text-align: center; font-size: 15px; font-weight: 800; margin-bottom:10px; color:#0f172a;">🛒 Захиалга Баталгаажуулах</h3>
             
             <div class="price-details">
                 <p class="price-text" id="modalProductTitle"></p>
@@ -659,8 +594,8 @@
                     <span id="modalProductPriceOnly">0₮</span>
                 </div>
                 <div class="price-row">
-                    <span>Хүргэлт:ҮНЭГҮЙ</span>
-                    <span style="color: #38bdf8; font-weight: bold;">хүргэлт 6-14 хоногт</span>
+                    <span>Хүргэлт:</span>
+                    <span style="color: #b8860b; font-weight: bold;">ҮНЭГҮЙ (6-14 хоног)</span>
                 </div>
                 <div class="total-text">
                     <span>Нийт дүн:</span>
@@ -700,7 +635,7 @@
                 <input type="number" id="userPhone" placeholder="Жишээ: 99112233">
             </div>
 
-            <div style="text-align: left; margin-bottom: 2px;"><label style="font-size: 9px; font-weight: bold; color: #38bdf8; text-transform: uppercase;">3. Хүргэлтийн хаяг:</label></div>
+            <div style="text-align: left; margin-bottom: 2px;"><label style="font-size: 10px; font-weight: bold; color: #b8860b; text-transform: uppercase;">3. Хүргэлтийн хаяг:</label></div>
             <div class="address-grid">
                 <div class="address-group">
                     <label>Дүүрэг:</label>
@@ -722,7 +657,7 @@
 
             <div class="phone-input-group">
                 <label>4. Төлбөрийн баримт оруулах:</label>
-                <input type="file" id="userReceipt" accept="image/*" style="width: 100%; padding: 5px; border: 1px solid #334155; border-radius: 6px; background: #0f172a; color: #ffffff; font-size: 10px;">
+                <input type="file" id="userReceipt" accept="image/*" style="width: 100%; padding: 6px; border: 1px solid #cbd5e1; border-radius: 6px; background: #ffffff; color: #0f172a; font-size: 11px;">
             </div>
 
             <button class="btn-close-modal" onclick="window.submitOrder()">✅ Захиалга илгээх & Төлөх</button>
@@ -880,7 +815,7 @@
             grid.innerHTML = "";
 
             if (!productsList || productsList.length === 0) {
-                grid.innerHTML = "<p style='color:#94a3b8; font-size:12px; padding: 10px 4px;'>Бараа олдсонгүй.</p>";
+                grid.innerHTML = "<p style='color:#64748b; font-size:12px; padding: 10px 4px;'>Бараа олдсонгүй.</p>";
                 return;
             }
 
@@ -1101,17 +1036,6 @@
             window.renderProducts(filtered);
         };
 
-        window.filterByCategory = function(category) {
-            if (!category) { window.renderProducts(allProductsArray); return; }
-            var catLower = category.toLowerCase();
-            var filtered = allProductsArray.filter(function(item) {
-                var name = item.data.name ? item.data.name.toLowerCase() : "";
-                var cat = item.data.category ? item.data.category.toLowerCase() : "";
-                return name.includes(catLower) || cat.includes(catLower);
-            });
-            window.renderProducts(filtered);
-        };
-
         window.toggleWishlist = function(btn, event) {
             if (event) event.stopPropagation();
             btn.classList.toggle('active');
@@ -1139,7 +1063,7 @@
             document.getElementById("addrBuilding").value = "";
             document.getElementById("addrDoor").value = "";
 
-            var randomCode = "AS-" + Math.floor(1000 + Math.random() * 9000);
+            var randomCode = "TM-" + Math.floor(1000 + Math.random() * 9000);
             document.getElementById("modalOrderCode").innerText = randomCode;
             document.getElementById("orderModal").style.display = "flex";
         };

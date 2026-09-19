@@ -3,148 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Миний сагс - ASAR SPORT</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Миний сагс - TEMOT LUXURY</title>
+    <!-- FontAwesome CDNs (давхар холболттой) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
     
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
-            background-color: #0b1120 !important; 
-            color: #94a3b8; 
-            padding: 20px 4% 50px 4%; 
-            -webkit-tap-highlight-color: transparent;
+        :root {
+            --bg-main: #f1f5f9;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+            --border-highlight: #cbd5e1;
+            --accent-gold: #d97706;
+            --accent-blue: #0284c7;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        *, *::before, *::after { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: var(--font-family) !important; 
         }
         
-        .header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+        body { 
+            background-color: var(--bg-main) !important; 
+            color: var(--text-secondary); 
+            padding: 24px 4% 60px 4%; 
+            -webkit-tap-highlight-color: transparent;
+            min-height: 100vh;
+        }
+        
+        /* Header & Буцах товчлуур */
+        .header { 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            max-width: 600px;
+            margin: 0 auto 24px auto; 
+        }
+        .header-left { display: flex; align-items: center; gap: 14px; }
+        
+        /* Шинэчлэгдсэн тодорхой буцах товчлуур */
         .btn-back { 
-            background: #1e293b; 
-            border: 1px solid #334155; 
-            width: 40px; 
-            height: 40px; 
+            background: #ffffff; 
+            border: 1px solid var(--border-color); 
+            width: 44px; 
+            height: 44px; 
             border-radius: 12px; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            color: #f8fafc; 
+            color: var(--text-primary); 
             text-decoration: none; 
-            font-size: 16px; 
-            transition: 0.2s;
+            font-size: 20px; 
+            font-weight: bold;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            cursor: pointer;
         }
-        .btn-back:hover { background: #334155; }
-        h1 { font-size: 20px; font-weight: 800; color: #f8fafc; text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-back:hover { 
+            background: #f8fafc; 
+            transform: translateX(-3px); 
+            border-color: var(--border-highlight);
+        }
+        .btn-back svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-primary);
+        }
 
-        .cart-container { display: flex; flex-direction: column; gap: 16px; max-width: 600px; margin: 0 auto; }
+        h1 { 
+            font-size: 20px; 
+            font-weight: 800; 
+            color: var(--text-primary); 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px;
+        }
+        .badge-count {
+            background: var(--accent-gold);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(217, 119, 6, 0.25);
+        }
+
+        /* Cart List */
+        .cart-container { display: flex; flex-direction: column; gap: 14px; max-width: 600px; margin: 0 auto; }
+        
         .cart-item { 
-            background: #1e293b; 
-            border: 1px solid #334155; 
-            border-radius: 18px; 
-            padding: 14px; 
+            background: var(--bg-card); 
+            border: 1px solid var(--border-color); 
+            border-radius: 16px; 
+            padding: 16px; 
             display: flex; 
-            gap: 14px; 
+            gap: 16px; 
             align-items: center; 
             position: relative; 
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: all 0.25s ease;
+        }
+        .cart-item:hover {
+            border-color: var(--border-highlight);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
         }
         
-        .cart-item img { 
-            width: 80px; 
-            height: 80px; 
-            object-fit: cover; 
+        .img-wrapper {
+            position: relative;
+            width: 84px; 
+            height: 84px; 
+            flex-shrink: 0;
             border-radius: 12px; 
-            border: 1px solid #334155; 
-            background: #0f172a; 
-            cursor: pointer; 
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background: #f8fafc;
+            cursor: pointer;
+        }
+        .cart-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.3s ease;
+        }
+        .img-wrapper:hover img {
+            transform: scale(1.05);
         }
         
-        .item-details { flex: 1; text-align: left; }
+        .item-details { flex: 1; min-width: 0; text-align: left; }
         .item-name { 
             font-size: 14px; 
             font-weight: 700; 
-            color: #f8fafc; 
-            text-transform: capitalize; 
-            margin-bottom: 6px; 
+            color: var(--text-primary); 
+            margin-bottom: 8px; 
             display: -webkit-box; 
             -webkit-line-clamp: 2; 
             line-clamp: 2;
             -webkit-box-orient: vertical; 
             overflow: hidden; 
+            line-height: 1.3;
+            padding-right: 24px;
         }
 
-        /* Edit боломжтой сонголтуудын стиль */
         .item-options {
             display: flex;
             gap: 8px;
-            margin-bottom: 6px;
+            margin-bottom: 10px;
             flex-wrap: wrap;
         }
 
         .edit-select {
-            background: #0f172a;
-            color: #38bdf8;
-            border: 1px solid #334155;
-            font-size: 11px;
-            font-weight: 700;
-            padding: 3px 6px;
-            border-radius: 6px;
+            background: #f8fafc;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 8px;
             outline: none;
             cursor: pointer;
+            transition: 0.2s;
         }
+        .edit-select:focus { border-color: var(--accent-gold); }
+        .edit-select option { background: #ffffff; color: #0f172a; }
 
-        .edit-select option {
-            background: #1e293b;
-            color: #f8fafc;
+        .item-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
-
-        .edit-select option:disabled {
-            color: #64748b;
-        }
-
-        .item-price { font-size: 15px; font-weight: 800; color: #38bdf8; }
+        .item-price { font-size: 16px; font-weight: 800; color: var(--accent-gold); }
         
-        .quantity-controls { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+        .quantity-controls { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; 
+            background: #f8fafc;
+            padding: 3px 6px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
         .btn-qty { 
-            background: #0f172a; 
-            border: 1px solid #334155; 
-            width: 28px; 
-            height: 28px; 
-            border-radius: 8px; 
-            font-size: 14px; 
+            background: #ffffff; 
+            border: 1px solid var(--border-color); 
+            width: 26px; 
+            height: 26px; 
+            border-radius: 6px; 
+            font-size: 13px; 
             font-weight: bold; 
             cursor: pointer; 
-            color: #f8fafc; 
+            color: var(--text-primary); 
             display: flex; 
             align-items: center; 
             justify-content: center; 
-            transition: 0.2s;
+            transition: all 0.2s;
         }
-        .btn-qty:hover { background: #334155; }
-        .qty-num { font-size: 14px; font-weight: 700; min-width: 15px; text-align: center; color: #f8fafc; }
+        .btn-qty:active { transform: scale(0.92); }
+        .btn-qty:hover { background: #f1f5f9; border-color: var(--border-highlight); }
+        .qty-num { font-size: 13px; font-weight: 700; min-width: 16px; text-align: center; color: var(--text-primary); }
         
-        .btn-remove { position: absolute; top: 14px; right: 14px; background: none; border: none; color: #64748b; cursor: pointer; font-size: 16px; transition: 0.2s; }
-        .btn-remove:hover { color: #f43f5e; }
-
-        .summary-card { 
-            background: #1e293b; 
-            border: 1px solid #334155; 
-            border-radius: 20px; 
-            padding: 20px; 
-            margin-top: 20px; 
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+        .btn-remove { 
+            position: absolute; 
+            top: 14px; 
+            right: 14px; 
+            background: none; 
+            border: none; 
+            color: var(--text-muted); 
+            cursor: pointer; 
+            font-size: 15px; 
+            transition: all 0.2s;
+            padding: 4px;
         }
-        .summary-row { display: flex; justify-content: space-between; font-size: 14px; color: #94a3b8; margin-bottom: 8px; }
+        .btn-remove:hover { color: #ef4444; transform: scale(1.1); }
+
+        /* Summary Card */
+        .summary-card { 
+            background: var(--bg-card); 
+            border: 1px solid var(--border-color); 
+            border-radius: 20px; 
+            padding: 24px; 
+            margin: 20px auto 0 auto; 
+            max-width: 600px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+        .summary-row { display: flex; justify-content: space-between; font-size: 14px; color: var(--text-secondary); margin-bottom: 10px; }
         .summary-total { 
             display: flex; 
             justify-content: space-between; 
-            font-size: 17px; 
+            align-items: center;
+            font-size: 18px; 
             font-weight: 800; 
-            color: #f8fafc; 
-            border-top: 1px dashed #334155; 
-            padding-top: 12px; 
-            margin-top: 12px; 
+            color: var(--text-primary); 
+            border-top: 1px dashed var(--border-color); 
+            padding-top: 14px; 
+            margin-top: 14px; 
         }
 
-        /* Модал Цонхнууд */
+        /* Modal */
         .modal { 
             display: none; 
             position: fixed; 
@@ -153,99 +256,195 @@
             top: 0; 
             width: 100%; 
             height: 100%; 
-            background-color: rgba(11, 17, 32, 0.8); 
-            backdrop-filter: blur(6px); 
+            background-color: rgba(15, 23, 42, 0.6); 
+            backdrop-filter: blur(4px); 
             justify-content: center; 
             align-items: center; 
+            animation: fadeIn 0.2s ease-out;
         }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
         .modal-content { 
-            background-color: #1e293b; 
-            border: 1px solid #334155; 
-            color: #f8fafc; 
-            padding: 24px; 
+            background: #ffffff; 
+            border: 1px solid var(--border-color); 
+            color: var(--text-primary); 
+            padding: 26px; 
             border-radius: 24px; 
             width: 92%; 
-            max-width: 420px; 
+            max-width: 440px; 
             position: relative; 
             max-height: 90vh; 
             overflow-y: auto; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
-        .close-btn { position: absolute; right: 20px; top: 15px; font-size: 24px; cursor: pointer; color: #64748b; }
-        .close-btn:hover { color: #f8fafc; }
+
+        .close-btn { 
+            position: absolute; 
+            right: 20px; 
+            top: 18px; 
+            font-size: 22px; 
+            cursor: pointer; 
+            color: var(--text-muted); 
+            transition: 0.2s;
+        }
+        .close-btn:hover { color: var(--text-primary); }
         
-        .price-details { text-align: left; background-color: #0f172a; padding: 16px; border-radius: 16px; margin: 16px 0; border: 1px solid #334155; }
-        .price-text { font-weight: 700; color: #f8fafc; font-size: 16px; text-align: center; margin-bottom: 4px; }
-        .price-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; color: #94a3b8; }
-        .total-text { color: #38bdf8; font-size: 16px; font-weight: 800; margin-top: 10px; border-top: 1px dashed #334155; padding-top: 10px; display: flex; justify-content: space-between; }
+        .price-details { 
+            text-align: left; 
+            background-color: #f8fafc; 
+            padding: 16px; 
+            border-radius: 14px; 
+            margin: 16px 0; 
+            border: 1px solid var(--border-color); 
+        }
+        .price-text { font-weight: 700; color: var(--text-primary); font-size: 15px; text-align: center; margin-bottom: 8px; }
+        .price-row { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; color: var(--text-secondary); }
+        .total-text { color: var(--accent-gold); font-size: 16px; font-weight: 800; margin-top: 10px; border-top: 1px dashed var(--border-color); padding-top: 10px; display: flex; justify-content: space-between; }
         
-        .modal-bank-card { background: #0f172a; border-radius: 16px; padding: 14px; margin-bottom: 16px; border: 1px solid #334155; }
-        .bank-info-row { display: flex; justify-content: space-between; align-items: center; font-size: 12px; margin-bottom: 8px; }
+        .modal-bank-card { 
+            background: #f8fafc; 
+            border-radius: 14px; 
+            padding: 16px; 
+            margin-bottom: 18px; 
+            border: 1px solid var(--border-color); 
+        }
+        .bank-info-row { display: flex; justify-content: space-between; align-items: center; font-size: 13px; margin-bottom: 8px; }
         .bank-info-row:last-child { margin-bottom: 0; }
-        .bank-info-label { color: #94a3b8; }
-        .bank-info-value { font-weight: 700; color: #f8fafc; }
-        .btn-copy { background-color: #1e293b; color: #f8fafc; border: 1px solid #334155; padding: 2px 6px; font-size: 10px; border-radius: 6px; cursor: pointer; margin-left: 4px; font-weight: 600; }
-        .btn-copy:hover { background-color: #334155; }
+        .bank-info-label { color: var(--text-secondary); }
+        .bank-info-value { font-weight: 700; color: var(--text-primary); }
+        .btn-copy { 
+            background-color: #ffffff; 
+            color: var(--text-primary); 
+            border: 1px solid var(--border-color); 
+            padding: 3px 8px; 
+            font-size: 11px; 
+            border-radius: 6px; 
+            cursor: pointer; 
+            margin-left: 6px; 
+            font-weight: 700; 
+            transition: 0.2s;
+        }
+        .btn-copy:hover { background-color: var(--accent-gold); color: #ffffff; border-color: var(--accent-gold); }
         
         .phone-input-group { margin-bottom: 14px; text-align: left; }
-        .phone-input-group label { display: block; font-size: 11px; font-weight: 700; color: #38bdf8; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .phone-input-group input { width: 100%; padding: 12px; background: #0f172a; border: 1px solid #334155; color: #f8fafc; border-radius: 10px; font-size: 14px; outline: none; font-weight: 600; }
-        .phone-input-group input:focus { border-color: #38bdf8; }
+        .phone-input-group label { display: block; font-size: 11px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .phone-input-group input { 
+            width: 100%; 
+            padding: 12px 14px; 
+            background: #ffffff; 
+            border: 1px solid var(--border-color); 
+            color: var(--text-primary); 
+            border-radius: 10px; 
+            font-size: 13px; 
+            outline: none; 
+            font-weight: 600; 
+            transition: 0.2s;
+        }
+        .phone-input-group input:focus { border-color: var(--accent-gold); box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.1); }
         
         .address-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 14px; }
         .address-group { text-align: left; }
-        .address-group label { display: block; font-size: 10px; font-weight: 700; color: #38bdf8; margin-bottom: 4px; text-transform: uppercase; }
-        .address-group input { width: 100%; padding: 10px; background: #0f172a; border: 1px solid #334155; color: #f8fafc; border-radius: 8px; font-size: 13px; outline: none; font-weight: 600; }
-        .address-group input:focus { border-color: #38bdf8; }
+        .address-group label { display: block; font-size: 10px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; text-transform: uppercase; }
+        .address-group input { 
+            width: 100%; 
+            padding: 10px 12px; 
+            background: #ffffff; 
+            border: 1px solid var(--border-color); 
+            color: var(--text-primary); 
+            border-radius: 8px; 
+            font-size: 12px; 
+            outline: none; 
+            font-weight: 600; 
+            transition: 0.2s;
+        }
+        .address-group input:focus { border-color: var(--accent-gold); }
         
-        .btn-close-modal { background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%); color: white; border: none; padding: 14px; width: 100%; border-radius: 12px; font-size: 14px; cursor: pointer; font-weight: bold; margin-top: 10px; transition: 0.2s; }
-        .btn-close-modal:hover { background: linear-gradient(135deg, #0369a1 0%, #1d4ed8 100%); }
+        .btn-submit-order { 
+            background: var(--accent-gold); 
+            color: white; 
+            border: none; 
+            padding: 16px; 
+            width: 100%; 
+            border-radius: 12px; 
+            font-size: 15px; 
+            cursor: pointer; 
+            font-weight: 800; 
+            margin-top: 10px; 
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+            transition: all 0.2s ease;
+        }
+        .btn-submit-order:hover { 
+            background: #b45309;
+            transform: translateY(-1px);
+        }
 
-        .image-preview-modal { display: none; position: fixed; z-index: 1100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.9); backdrop-filter: blur(8px); justify-content: center; align-items: center; }
+        /* Image Preview Modal */
+        .image-preview-modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 1100; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(15, 23, 42, 0.85); 
+            backdrop-filter: blur(8px); 
+            justify-content: center; 
+            align-items: center; 
+        }
         .image-preview-wrapper { position: relative; max-width: 90%; max-height: 75vh; display: flex; justify-content: center; align-items: center; }
-        .image-preview-content { max-width: 100%; max-height: 75vh; border-radius: 16px; object-fit: contain; }
-        .image-preview-title { position: absolute; bottom: -55px; color: white; font-size: 14px; font-weight: 700; background: rgba(30, 41, 59, 0.8); padding: 6px 20px; border-radius: 30px; white-space: nowrap; border: 1px solid #334155; }
-        .close-preview-btn { position: absolute; top: -50px; right: 0; color: white; font-size: 35px; cursor: pointer; background: none; border: none; }
+        .image-preview-content { max-width: 100%; max-height: 75vh; border-radius: 16px; object-fit: contain; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .image-preview-title { position: absolute; bottom: -55px; color: white; font-size: 13px; font-weight: 700; background: rgba(15, 23, 42, 0.8); padding: 8px 20px; border-radius: 30px; white-space: nowrap; }
+        .close-preview-btn { position: absolute; top: -50px; right: 0; color: white; font-size: 32px; cursor: pointer; background: none; border: none; }
         
-        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(30, 41, 59, 0.8); color: white; border: 1px solid #334155; width: 44px; height: 44px; border-radius: 50%; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-        .arrow-left { left: -60px; }
-        .arrow-right { right: -60px; }
+        .nav-arrow { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255, 255, 255, 0.9); color: #0f172a; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+        .nav-arrow:hover { background: #ffffff; transform: translateY(-50%) scale(1.08); }
+        .arrow-left { left: -50px; }
+        .arrow-right { right: -50px; }
 
         @media (max-width: 768px) {
-            .arrow-left { left: -15px; background: rgba(15, 23, 42, 0.8); }
-            .arrow-right { right: -15px; background: rgba(15, 23, 42, 0.8); }
+            body { padding: 16px 12px 40px 12px; }
+            .arrow-left { left: 5px; }
+            .arrow-right { right: 5px; }
         }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <a href="index.html" class="btn-back"><i class="fa-solid fa-chevron-left"></i></a>
-        <h1>Миний сагс</h1>
+        <div class="header-left">
+            <!-- Зүүн тийш заасан тодорхой буцах товчлуур -->
+            <a href="index.html" class="btn-back" title="Буцах">
+                <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+            </a>
+            <h1>Миний сагс</h1>
+        </div>
+        <span class="badge-count" id="cartBadge">0 бараа</span>
     </div>
 
     <div class="cart-container" id="cartItemsList"></div>
 
-    <div class="summary-card" id="cartSummaryBlock" style="max-width: 600px; margin: 20px auto 0 auto; display: none;">
+    <div class="summary-card" id="cartSummaryBlock" style="display: none;">
         <div class="summary-row">
             <span>Барааны нийт үнэ:</span>
-            <span id="summarySubtotal">0₮</span>
+            <span id="summarySubtotal" style="color: var(--text-primary); font-weight: 700;">0₮</span>
         </div>
         <div class="summary-row">
             <span>Хүргэлтийн төлбөр:</span>
-            <span style="color: #38bdf8; font-weight: bold;">ҮНЭГҮЙ</span>
+            <span style="color: var(--accent-gold); font-weight: 800;">ҮНЭГҮЙ</span>
         </div>
         <div class="summary-total">
             <span>Нийт төлөх дүн:</span>
-            <span id="summaryGrandTotal">0₮</span>
+            <span id="summaryGrandTotal" style="color: var(--accent-gold);">0₮</span>
         </div>
-        <button class="btn-close-modal" onclick="window.openOrderModal()">🛒 Захиалга баталгаажуулах</button>
+        <button class="btn-submit-order" onclick="window.openOrderModal()">🛒 Захиалга баталгаажуулах</button>
     </div>
 
+    <!-- Modal Order -->
     <div id="orderModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="window.closeModal()">&times;</span>
-            <h3 style="text-align: center; font-size: 16px; font-weight: 800; margin-bottom:10px; color:#f8fafc;">🛒 Захиалга Баталгаажуулах</h3>
+            <h3 style="text-align: center; font-size: 17px; font-weight: 800; margin-bottom:12px; color:var(--text-primary);">🛒 Захиалга Баталгаажуулах</h3>
             
             <div class="price-details">
                 <p class="price-text" id="modalProductTitle">Сагсан дахь бүх бараа</p>
@@ -255,7 +454,7 @@
                 </div>
                 <div class="price-row">
                     <span>Хүргэлт:</span>
-                    <span style="color: #38bdf8; font-weight: bold;">ҮНЭГҮЙ</span>
+                    <span style="color: var(--accent-gold); font-weight: 800;">ҮНЭГҮЙ</span>
                 </div>
                 <div class="total-text">
                     <span>Нийт дүн:</span>
@@ -280,8 +479,8 @@
                     <span class="bank-info-value">Б.Тэмүүжин</span>
                 </div>
                 <div class="bank-info-row">
-                    <span class="bank-info-label" style="color:#f43f5e; font-weight:bold;">Гүйлгээний утга:</span>
-                    <span class="bank-info-value" id="modalOrderCode" style="color:#f43f5e; font-weight: 800;">---</span>
+                    <span class="bank-info-label" style="color:#ef4444; font-weight:bold;">Гүйлгээний утга:</span>
+                    <span class="bank-info-value" id="modalOrderCode" style="color:#ef4444; font-weight: 800;">---</span>
                 </div>
             </div>
 
@@ -295,7 +494,7 @@
                 <input type="number" id="userPhone" placeholder="Жишээ: 99112233">
             </div>
 
-            <div style="text-align: left; margin-bottom: 4px;"><label style="font-size: 11px; font-weight: bold; color: #38bdf8; text-transform: uppercase;">3. Хүргэлтийн хаяг:</label></div>
+            <div style="text-align: left; margin-bottom: 4px;"><label style="font-size: 11px; font-weight: bold; color: var(--text-primary); text-transform: uppercase;">3. Хүргэлтийн хаяг:</label></div>
             <div class="address-grid">
                 <div class="address-group">
                     <label>Дүүрэг:</label>
@@ -317,23 +516,25 @@
 
             <div class="phone-input-group">
                 <label>4. Төлбөрийн баримт оруулах:</label>
-                <input type="file" id="userReceipt" accept="image/*" style="width: 100%; padding: 8px; border: 1px solid #334155; border-radius: 8px; background: #0f172a; color: #f8fafc; font-weight: bold; font-size: 12px;">
+                <input type="file" id="userReceipt" accept="image/*" style="width: 100%; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; background: #ffffff; color: var(--text-primary); font-weight: bold; font-size: 12px;">
             </div>
 
-            <button class="btn-close-modal" onclick="window.submitOrder()">✅ Захиалга илгээх & Төлөх</button>
+            <button class="btn-submit-order" onclick="window.submitOrder()">✅ Захиалга илгээх & Төлөх</button>
         </div>
     </div>
 
+    <!-- Image Preview Modal -->
     <div id="imagePreviewModal" class="image-preview-modal">
         <div class="image-preview-wrapper">
             <button class="close-preview-btn" onclick="window.closeImagePreview()">&times;</button>
-            <button class="nav-arrow arrow-left" onclick="window.changePreviewImage(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="nav-arrow arrow-left" onclick="window.changePreviewImage(-1)">❮</button>
             <img id="previewModalImg" class="image-preview-content" src="" alt="Томруулсан зураг">
-            <button class="nav-arrow arrow-right" onclick="window.changePreviewImage(1)"><i class="fa-solid fa-chevron-right"></i></button>
+            <button class="nav-arrow arrow-right" onclick="window.changePreviewImage(1)">❯</button>
             <div id="previewModalTitle" class="image-preview-title">Барааны нэр</div>
         </div>
     </div>
 
+    <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
@@ -368,31 +569,44 @@
         let currentActiveTitle = "";
         let calculatedSubtotal = 0; 
 
-        window.onload = function() {
-            // Firebase-с мэдээллээ байнга realtime шууд сонсож шинэчилнэ
-            database.ref('products').on('value', function(snapshot) {
+        window.addEventListener('DOMContentLoaded', () => {
+            window.renderCart();
+            fetchFirebaseDataInBackground();
+        });
+
+        function fetchFirebaseDataInBackground() {
+            database.ref('products').once('value').then((snapshot) => {
                 firebaseProductsCache = [];
                 if(snapshot.exists()) {
-                    snapshot.forEach(function(childSnapshot) {
+                    snapshot.forEach((childSnapshot) => {
                         let item = childSnapshot.val();
                         item.firebaseKey = childSnapshot.key;
                         firebaseProductsCache.push(item);
                     });
                 }
                 window.renderCart();
-            });
-        };
+            }).catch(err => console.log("Sync:", err));
+        }
 
         window.renderCart = function() {
             const listContainer = document.getElementById("cartItemsList");
             const summaryBlock = document.getElementById("cartSummaryBlock");
+            const badge = document.getElementById("cartBadge");
             if (!listContainer) return;
 
             listContainer.innerHTML = "";
             calculatedSubtotal = 0; 
+            
+            const totalCount = cart.reduce((acc, curr) => acc + (curr.quantity || 1), 0);
+            if (badge) badge.innerText = totalCount + " бараа";
 
             if (!cart || cart.length === 0) {
-                listContainer.innerHTML = "<p style='color:#94a3b8; font-size:14px; text-align:center; padding: 40px 0;'>Сагс хоосон байна.</p>";
+                listContainer.innerHTML = `
+                    <div style="text-align:center; padding: 60px 20px; background: var(--bg-card); border-radius:16px; border:1px solid var(--border-color);">
+                        <div style="font-size: 48px; margin-bottom: 16px;">🛒</div>
+                        <p style="color:var(--text-secondary); font-size:15px; font-weight:600;">Таны сагс одоогоор хоосон байна.</p>
+                        <a href="index.html" style="display:inline-block; margin-top:16px; padding:10px 20px; background:rgba(217, 119, 6, 0.1); color:var(--accent-gold); text-decoration:none; border-radius:8px; font-weight:700; font-size:13px; border:1px solid rgba(217, 119, 6, 0.2);">Нүүр хуудас руу буцах</a>
+                    </div>`;
                 if (summaryBlock) summaryBlock.style.display = "none";
                 return;
             }
@@ -408,35 +622,18 @@
 
                 let foundProd = firebaseProductsCache.find(p => p.name && p.name.toLowerCase().trim() === item.name.toLowerCase().trim());
                 
-                // Боломжит өнгө, хэмжээ болон үлдэгдлийн мэдээлэл боловсруулах
                 let availableSizes = ['S', 'M', 'L', 'XL', '2XL'];
                 let availableColors = ['Үндсэн'];
                 let outOfStockColors = [];
                 let outOfStockSizes = [];
 
                 if (foundProd) {
-                    if (foundProd.images && foundProd.images.length > 0) {
-                        imagesList = foundProd.images;
-                    }
+                    if (foundProd.images && foundProd.images.length > 0) imagesList = foundProd.images;
+                    if (foundProd.sizes && Array.isArray(foundProd.sizes)) availableSizes = foundProd.sizes;
+                    if (foundProd.colors && Array.isArray(foundProd.colors)) availableColors = foundProd.colors;
+                    if (foundProd.outOfStockColors && Array.isArray(foundProd.outOfStockColors)) outOfStockColors = foundProd.outOfStockColors;
+                    if (foundProd.outOfStockSizes && Array.isArray(foundProd.outOfStockSizes)) outOfStockSizes = foundProd.outOfStockSizes;
 
-                    if (foundProd.sizes && Array.isArray(foundProd.sizes)) {
-                        availableSizes = foundProd.sizes;
-                    }
-
-                    if (foundProd.colors && Array.isArray(foundProd.colors)) {
-                        availableColors = foundProd.colors;
-                    }
-
-                    // Хэрэв Firebase дээр тодорхой өнгө/хэмжээний үлдэгдэл бүртгэлтэй бол
-                    if (foundProd.outOfStockColors && Array.isArray(foundProd.outOfStockColors)) {
-                        outOfStockColors = foundProd.outOfStockColors;
-                    }
-
-                    if (foundProd.outOfStockSizes && Array.isArray(foundProd.outOfStockSizes)) {
-                        outOfStockSizes = foundProd.outOfStockSizes;
-                    }
-
-                    // Бараа нийтдээ дууссан бол
                     if (Number(foundProd.stock) <= 0) {
                         outOfStockColors = availableColors;
                         outOfStockSizes = availableSizes;
@@ -447,14 +644,12 @@
                 let itemSize = item.size || availableSizes[0] || 'M';
                 let itemColor = item.color || availableColors[0] || 'Үндсэн';
 
-                // Сонголтууд үүсгэх HTML (Size Dropdown)
                 let sizeOptionsHTML = availableSizes.map(sz => {
                     let isDisabled = outOfStockSizes.includes(sz);
                     let selected = sz === itemSize ? 'selected' : '';
                     return `<option value="${sz}" ${selected} ${isDisabled ? 'disabled' : ''}>Хэмжээ: ${sz} ${isDisabled ? '(Дууссан)' : ''}</option>`;
                 }).join('');
 
-                // Сонголтууд үүсгэх HTML (Color Dropdown)
                 let colorOptionsHTML = availableColors.map(cl => {
                     let isDisabled = outOfStockColors.includes(cl);
                     let selected = cl === itemColor ? 'selected' : '';
@@ -463,22 +658,27 @@
 
                 const card = document.createElement("div");
                 card.className = "cart-item";
-                card.innerHTML = 
-                    '<img src="' + mainImg + '" alt="' + item.name + '" onclick="window.openCartImagePreview(\'' + encodedImages + '\', \'' + item.name.replace(/'/g, "\\'") + '\')">' +
-                    '<div class="item-details">' +
-                        '<h3 class="item-name">' + item.name + '</h3>' +
-                        '<div class="item-options">' +
-                            '<select class="edit-select" onchange="window.updateItemOption(' + index + ', \'size\', this.value)">' + sizeOptionsHTML + '</select>' +
-                            '<select class="edit-select" onchange="window.updateItemOption(' + index + ', \'color\', this.value)">' + colorOptionsHTML + '</select>' +
-                        '</div>' +
-                        '<p class="item-price">' + itemTotal.toLocaleString() + '₮</p>' +
-                        '<div class="quantity-controls">' +
-                            '<button class="btn-qty" onclick="window.changeQuantity(' + index + ', -1)">-</button>' +
-                            '<span class="qty-num">' + item.quantity + '</span>' +
-                            '<button class="btn-qty" onclick="window.changeQuantity(' + index + ', 1)">+</button>' +
-                        '</div>' +
-                    '</div>' +
-                    '<button class="btn-remove" onclick="window.removeFromCart(' + index + ')"><i class="fa-solid fa-trash-can"></i></button>';
+                card.innerHTML = `
+                    <div class="img-wrapper" onclick="window.openCartImagePreview('${encodedImages}', '${item.name.replace(/'/g, "\\'")}')">
+                        <img src="${mainImg}" alt="${item.name}">
+                    </div>
+                    <div class="item-details">
+                        <h3 class="item-name">${item.name}</h3>
+                        <div class="item-options">
+                            <select class="edit-select" onchange="window.updateItemOption(${index}, 'size', this.value)">${sizeOptionsHTML}</select>
+                            <select class="edit-select" onchange="window.updateItemOption(${index}, 'color', this.value)">${colorOptionsHTML}</select>
+                        </div>
+                        <div class="item-bottom">
+                            <p class="item-price">${itemTotal.toLocaleString()}₮</p>
+                            <div class="quantity-controls">
+                                <button class="btn-qty" onclick="window.changeQuantity(${index}, -1)">-</button>
+                                <span class="qty-num">${item.quantity}</span>
+                                <button class="btn-qty" onclick="window.changeQuantity(${index}, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn-remove" onclick="window.removeFromCart(${index})" title="Устгах">🗑️</button>
+                `;
                 
                 listContainer.appendChild(card);
             });
@@ -487,7 +687,6 @@
             document.getElementById("summaryGrandTotal").innerText = calculatedSubtotal.toLocaleString() + "₮";
         };
 
-        // Өнгө, хэмжээг сагсан дотроос шууд EDIT хийж шинэчлэх функц
         window.updateItemOption = function(index, type, value) {
             if (cart[index]) {
                 cart[index][type] = value;
@@ -500,7 +699,7 @@
             try {
                 localStorage.setItem('cart', JSON.stringify(cart));
             } catch (e) {
-                console.error("Local Storage quota exceeded", e);
+                console.error("Local Storage limit overflow", e);
             }
         };
 
@@ -557,7 +756,7 @@
             document.getElementById("addrBuilding").value = "";
             document.getElementById("addrDoor").value = "";
 
-            var randomCode = "TS-" + Math.floor(1000 + Math.random() * 9000);
+            var randomCode = "TO-" + Math.floor(1000 + Math.random() * 9000);
             document.getElementById("modalOrderCode").innerText = randomCode;
 
             document.getElementById("orderModal").style.display = "flex";
@@ -595,17 +794,16 @@
             var totalAmount = calculatedSubtotal.toLocaleString() + "₮";
             var fullAddress = district + ", " + khoroo + ", " + building + ", " + door;
 
-            // Сонгосон Хэмжээ болон Өнгийг захиалгын мэдээлэлд оруулах
             let itemsText = cart.map(item => item.name + " [" + (item.size || 'M') + " / " + (item.color || 'Үндсэн') + "] (" + item.quantity + "ш)").join(", ");
 
-            var textMessage = "🔔 САГСНЫ ШИНЭ ЗАХИАЛГА!\n\n📧 Gmail: " + emailInput + "\n📞 Утас: " + phoneInput + "\n📦 Бараанууд: " + itemsText + "\n📍 Хаяг: " + fullAddress + "\n💰 Нийт дүн (Хүргэлт үнэгүй): " + totalAmount + "\n🔢 Гүйлгээний утга: " + orderCode;
+            var textMessage = "🔔 САГСНЫ ШИНЭ ЗАХИАЛГА!\n\n📧 Gmail: " + emailInput + "\n📞 Утас: " + phoneInput + "\n📦 Бараанууд: " + itemsText + "\n📍 Хаяг: " + fullAddress + "\n💰 Нийт дүн: " + totalAmount + "\n🔢 Гүйлгээний утга: " + orderCode;
 
             var formData = new FormData();
             formData.append("chat_id", TG_CHAT_ID);
             formData.append("photo", file);
             formData.append("caption", textMessage);
 
-            var submitBtn = document.querySelector("#orderModal .btn-close-modal");
+            var submitBtn = document.querySelector("#orderModal .btn-submit-order");
             submitBtn.innerText = "Илгээж байна...";
             submitBtn.disabled = true;
 
@@ -616,7 +814,6 @@
             .then(response => response.json())
             .then(data => {
                 if(data.ok) {
-                    // 1. Захиалгыг Firebase-д хадгалах
                     database.ref('orders').push({ 
                         email: emailInput,
                         phone: phoneInput, 
@@ -626,40 +823,31 @@
                         timestamp: Date.now() 
                     });
 
-                    // 2. Firebase дээрх БАРААНЫ ҮЛДЭГДЛИЙГ (STOCK) ХАСАЖ ШИНЭЧЛЭХ
                     cart.forEach(function(cartItem) {
-                        database.ref('products').once('value', function(snapshot) {
-                            snapshot.forEach(function(childSnapshot) {
-                                var pData = childSnapshot.val();
-                                if (pData.name && pData.name.toLowerCase().trim() === cartItem.name.toLowerCase().trim()) {
-                                    var currentStock = Number(pData.stock || 0);
-                                    var newStock = Math.max(0, currentStock - (cartItem.quantity || 1));
-                                    
-                                    // Шинэчилж буй нэмэлт тохиргоо
-                                    let updates = { stock: newStock };
-                                    
-                                    // Хэрэв үлдэгдэл 0 болсон бол сонгосон өнгийг Дууссан жагсаалтад нэмэх
-                                    if (newStock === 0 && cartItem.color) {
-                                        let outColors = pData.outOfStockColors || [];
-                                        if (!outColors.includes(cartItem.color)) {
-                                            outColors.push(cartItem.color);
-                                        }
-                                        updates.outOfStockColors = outColors;
-                                    }
+                        let matchedProd = firebaseProductsCache.find(p => p.name && p.name.toLowerCase().trim() === cartItem.name.toLowerCase().trim());
+                        if (matchedProd && matchedProd.firebaseKey) {
+                            let currentStock = Number(matchedProd.stock || 0);
+                            let newStock = Math.max(0, currentStock - (cartItem.quantity || 1));
+                            let updates = { stock: newStock };
 
-                                    childSnapshot.ref.update(updates);
+                            if (newStock === 0 && cartItem.color) {
+                                let outColors = matchedProd.outOfStockColors || [];
+                                if (!outColors.includes(cartItem.color)) {
+                                    outColors.push(cartItem.color);
                                 }
-                            });
-                        });
+                                updates.outOfStockColors = outColors;
+                            }
+                            database.ref('products/' + matchedProd.firebaseKey).update(updates);
+                        }
                     });
 
-                    alert("Захиалга амжилттай илгээгдлээ! Сагсыг хоосоллоо. 👍");
+                    alert("Захиалга амжилттай илгээгдлээ! 👍");
                     cart = [];
                     window.saveCart();
                     window.closeModal();
                     window.renderCart();
                 } else {
-                    alert("Алдаа гарлаа: Бот руу илгээж чадсангүй.");
+                    alert("Алдаа гарлаа: Телеграм бот руу илгээж чадсангүй.");
                 }
             })
             .catch(err => { alert("Холболтын алдаа: " + err.message); })
