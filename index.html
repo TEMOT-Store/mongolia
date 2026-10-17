@@ -555,8 +555,9 @@
 
         .cart-status {
             font-weight: 600;
-            font-size: 15px;
-            padding: 11px 24px;
+            font-size: 13px;
+            padding: 7px 14px;
+            gap: 6px;
             border: 1px solid #3a3d48;
             background: rgba(255, 255, 255, 0.03);
             letter-spacing: 0.5px;
@@ -727,6 +728,9 @@
             .product-title { font-size: 15px; }
         }
 
+        /* Урт тайлбар цонхыг сунгахгүй, дотроо гүйлгэгдэнэ */
+        .product-detail-description { max-height: 150px; overflow-y: auto; }
+
         /* БАННЕРЫН ХУВЦАСНЫ ЗУРАГ (шошготой) */
         .hero-banner::before {
             width: 62%;
@@ -747,7 +751,7 @@
         </a>
         <div class="nav-right">
             <a href="cart.html" class="cart-status">
-                <i class="fa-solid fa-cart-shopping"></i> Carc ( <span id="headerCartCount">0</span> )
+                <span style="font-size:14px; line-height:1;">🛒</span> ( <span id="headerCartCount">0</span> )
             </a>
         </div>
     </nav>
@@ -1115,6 +1119,7 @@
                 } else {
                     buyBtn.innerHTML = '<i class="fa-solid fa-bag-shopping"></i> Захиалах';
                     buyBtn.onclick = function(e) {
+                        if (availableSizes.length > 0 || availableColors.length > 0) { e.stopPropagation(); window.openProductDetailModal(prodId); return; }
                         var chosenSize = card.getAttribute('data-selected-size') || (availableSizes[0] || 'Стандарт');
                         var chosenColor = card.getAttribute('data-selected-color') || (availableColors[0] || '');
                         window.openModal(prodId, prodName, numericPrice, chosenSize, chosenColor, e);
@@ -1130,6 +1135,7 @@
                 } else {
                     cartBtn.textContent = "Сагслах";
                     cartBtn.onclick = function(e) {
+                        if (availableSizes.length > 0 || availableColors.length > 0) { e.stopPropagation(); window.openProductDetailModal(prodId); return; }
                         var chosenSize = card.getAttribute('data-selected-size') || (availableSizes[0] || 'Стандарт');
                         var chosenColor = card.getAttribute('data-selected-color') || (availableColors[0] || '');
                         window.addToCart(prodName, numericPrice, imgUrl, prodId, chosenSize, chosenColor, e);
@@ -1141,8 +1147,7 @@
 
                 card.appendChild(wishBtn);
                 card.appendChild(clickableArea);
-                if (availableSizes.length > 0) card.appendChild(sizeWrapper);
-                if (availableColors.length > 0) card.appendChild(colorWrapper);
+                // Хэмжээ/өнгө сонголт картан дээр харагдахгүй, бараан дээр дарахад дэлгэрэнгүй цонхонд гарна
                 card.appendChild(btnGroup);
 
                 grid.appendChild(card);
